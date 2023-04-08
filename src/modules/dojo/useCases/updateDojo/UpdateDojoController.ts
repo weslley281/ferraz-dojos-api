@@ -47,15 +47,15 @@ class UpdateDojoController {
         paid_out,
       });
 
-      return response.status(201).send(obj);
+      return response.status(201).json(obj);
     } catch (error: any) {
       console.error(`Erro ao alterar dojo: ${error}`);
 
       if (error instanceof AppError) {
-        return response.status(error.statusCode).send({ error: error.message });
+        return response.status(error.statusCode).json({ error: error.message });
       }
 
-      return response.status(400).send({ error: error.error });
+      return response.status(400).json({ error: error.error });
     }
   }
 }
