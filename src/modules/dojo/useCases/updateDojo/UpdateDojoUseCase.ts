@@ -33,7 +33,7 @@ class UpdateDojoUseCase {
   }: IRequest): Promise<Dojo> {
     const dojoAlreadyExists = await this.dojoRepository.findByEmail(email);
 
-    if (dojoAlreadyExists === 1) {
+    if (dojoAlreadyExists) {
       try {
         return this.dojoRepository.update({
           id_dojo,
@@ -51,7 +51,7 @@ class UpdateDojoUseCase {
         throw new AppError(`Cannot update Dojo: ${error}`);
       }
     }
-    throw new Error(`Dojo doesn't already exists`);
+    throw new Error(`Dojo doesn't exists`);
   }
 }
 

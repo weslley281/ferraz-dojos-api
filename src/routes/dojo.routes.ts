@@ -1,6 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import { createDojoController } from '../modules/dojo/useCases/createDojo';
 import { updateDojoController } from '../modules/dojo/useCases/updateDojo';
+import { listDojoController } from '../modules/dojo/useCases/listaAllDojos';
 
 export async function DojosRoutes(app: FastifyInstance) {
   app.post('/', async (request, responce) => {
@@ -9,5 +10,9 @@ export async function DojosRoutes(app: FastifyInstance) {
 
   app.put('/', async (request, responce) => {
     updateDojoController.handle(request, responce);
+  });
+
+  app.get('/all', async (request, responce) => {
+    listDojoController.handle(request, responce);
   });
 }
