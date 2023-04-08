@@ -1,16 +1,20 @@
 import { dojoModel } from '../../../../database/models/dojosModel';
+import { AppError } from '../../../erros/Error';
 import { Dojo } from '../../models/Dojo';
 import { IDojoRepository } from '../IDojoRepository';
+import { Op } from 'sequelize';
 
 class DojoRepository implements IDojoRepository {
-  private static INSTANCE: DojoRepository;
+  private static instance: DojoRepository;
 
-  public static getInstance() {
-    if (!DojoRepository.INSTANCE) {
-      DojoRepository.INSTANCE = new DojoRepository();
+  private constructor() {}
+
+  public static getInstance(): DojoRepository {
+    if (!DojoRepository.instance) {
+      DojoRepository.instance = new DojoRepository();
     }
 
-    return DojoRepository.INSTANCE;
+    return DojoRepository.instance;
   }
 
   async create({
@@ -40,7 +44,7 @@ class DojoRepository implements IDojoRepository {
       paid_out,
     });
 
-    return obj;
+    return obj.toJSON() as Dojo;
   }
 
   async update({
@@ -55,9 +59,24 @@ class DojoRepository implements IDojoRepository {
     email,
     paid_out,
   }: ICreateDojoDTO): Promise<Dojo> {
-    const obj: any = await dojoModel.update(
+    // const obj: any = await dojoModel.update(
+    //   {
+    //     id_dojo,
+    //     dojo,
+    //     address_line1,
+    //     address_line2,
+    //     city,
+    //     state,
+    //     country,
+    //     phone,
+    //     email,
+    //     paid_out,
+    //   },
+    //   { where: { id_dojo: id_dojo } }
+    // );
+
+    const [rowsAffected] = await dojoModel.update(
       {
-        id_dojo,
         dojo,
         address_line1,
         address_line2,
@@ -68,10 +87,20 @@ class DojoRepository implements IDojoRepository {
         email,
         paid_out,
       },
-      { where: { id_dojo: id_dojo } }
+      {
+        where: { id_dojo: id_dojo },
+      }
     );
 
-    return obj;
+    if (rowsAffected === 0) {
+      throw new AppError('Dojo not found.', 404);
+    }
+
+    const updatedDojo = await dojoModel.findOne({
+      where: { id_dojo: id_dojo },
+    });
+
+    return updatedDojo?.toJSON() as Dojo;
   }
 
   async findById(id_dojo: string): Promise<Dojo> {
@@ -80,22 +109,41 @@ class DojoRepository implements IDojoRepository {
     return obj;
   }
 
-  async findByEmail(email: string): Promise<Number> {
-    const obj: any = await dojoModel.findOne({ where: { email: email } });
+  async findByEmail(email: string): Promise<Dojo | null> {
+    const dojo = await dojoModel.findOne({ where: { email } });
+    console.log(`O resultado de busca do email é ${dojo}`);
 
-    return obj;
+    return dojo ? (dojo.toJSON() as Dojo) : null;
   }
 
   async list(): Promise<Dojo[]> {
-    const obj: any = await dojoModel.findAll();
+    const dojos = await dojoModel.findAll();
 
-    return obj;
+    return dojos.map((dojo) => dojo.toJSON() as Dojo);
   }
 
-  async delete(id_dojo: string): Promise<Dojo> {
-    const obj: any = await dojoModel.destroy({ where: { id_dojo: id_dojo } });
+  async delete(id_dojo: string): Promise<void> {
+    const rowsAffected = await dojoModel.destroy({
+      where: { id_dojo },
+    });
 
-    return obj;
+    if (rowsAffected === 0) {
+      throw new AppError('Dojo not found.', 404);
+    }
+  }
+
+  async search(searchTerm: string): Promise<Dojo[]> {
+    const dojos = await dojoModel.findAll({
+      where: {
+        [Op.or]: [
+          { dojo: { [Op.iLike]: `%${searchTerm}%` } },
+          { city: { [Op.iLike]: `%${searchTerm}%` } },
+          { state: { [Op.iLike]: `%${searchTerm}%` } },
+        ],
+      },
+    });
+
+    return dojos.map((dojo) => dojo.toJSON() as Dojo);
   }
 }
 

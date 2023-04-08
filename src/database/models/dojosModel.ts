@@ -35,6 +35,10 @@ const dojoModel = connection.define('dojo', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
+  country: {
+    type: DataTypes.STRING(100),
+    allowNull: false,
+  },
   paid_out: {
     type: DataTypes.BOOLEAN,
     allowNull: false,

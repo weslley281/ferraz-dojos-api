@@ -52,7 +52,7 @@ class UpdateDojoController {
 
       return response.status(201).send(obj);
     } catch (error: any) {
-      console.error(`Erro ao cadastrar dojo: ${error}`);
+      console.error(`Erro ao alterar dojo: ${error}`);
 
       if (error instanceof AppError) {
         return response.status(error.statusCode).send({ error: error.message });

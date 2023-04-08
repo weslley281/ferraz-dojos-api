@@ -27,8 +27,8 @@ interface IDojoRepository {
     paid_out,
   }: ICreateDojoDTO): Promise<Dojo>;
   findById(id_dojo: string): Promise<Dojo>;
-  delete(id_dojo: string): Promise<Dojo>;
-  findByEmail(email: string): Promise<Number>;
+  delete(id_dojo: string): Promise<void>;
+  findByEmail(email: string): Promise<Dojo | null>;
   list(): Promise<Dojo[]>;
 }
 

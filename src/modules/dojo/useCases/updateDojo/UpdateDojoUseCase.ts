@@ -31,27 +31,22 @@ class UpdateDojoUseCase {
     email,
     paid_out,
   }: IRequest): Promise<Dojo> {
-    const dojoAlreadyExists = await this.dojoRepository.findByEmail(email);
-
-    if (dojoAlreadyExists) {
-      try {
-        return this.dojoRepository.update({
-          id_dojo,
-          dojo,
-          address_line1,
-          address_line2,
-          city,
-          state,
-          country,
-          phone,
-          email,
-          paid_out,
-        });
-      } catch (error) {
-        throw new AppError(`Cannot update Dojo: ${error}`);
-      }
+    try {
+      return this.dojoRepository.update({
+        id_dojo,
+        dojo,
+        address_line1,
+        address_line2,
+        city,
+        state,
+        country,
+        phone,
+        email,
+        paid_out,
+      });
+    } catch (error) {
+      throw new AppError(`Cannot update Dojo: ${error}`);
     }
-    throw new Error(`Dojo doesn't exists`);
   }
 }
 
