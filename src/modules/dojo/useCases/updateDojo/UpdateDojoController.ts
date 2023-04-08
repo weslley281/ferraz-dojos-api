@@ -1,15 +1,12 @@
 import { AppError } from '../../../erros/Error';
 import { UpdateDojoUseCase } from './UpdateDojoUseCase';
-import { FastifyRequest, FastifyReply } from 'fastify';
+import { Request, Response } from 'express';
 import { z } from 'zod';
 
 class UpdateDojoController {
   constructor(private updateDojoUseCase: UpdateDojoUseCase) {}
 
-  async handle(
-    request: FastifyRequest,
-    response: FastifyReply
-  ): Promise<FastifyReply> {
+  async handle(request: Request, response: Response): Promise<Response> {
     const createDojoBodySchema = z.object({
       id_dojo: z.string(),
       dojo: z.string(),

@@ -4,8 +4,6 @@ import { app } from '.';
 const port = 5000;
 const host = '192.168.1.6';
 
-app
-  .listen({ host, port })
-  .then(() =>
-    console.log(`🚀 The HTTP Server is running on http://${host}:${port}`)
-  );
+app.listen(port, () =>
+  console.log(`🚀 The HTTP Server is running on http://${host}:${port}`)
+);

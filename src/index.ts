@@ -1,13 +1,13 @@
-import fastify from 'fastify';
-import { DojosRoutes } from './routes/dojo.routes';
+import express from 'express';
 import { createConnectionDataBase } from './database/db';
 import { createTableDojo, dojoModel } from './database/models/dojosModel';
+import { dojosRoutes } from './routes/dojo.routes';
 
 createConnectionDataBase();
 createTableDojo(dojoModel);
 
-const app = fastify();
+const app = express();
 
-app.register(DojosRoutes, { prefix: 'dojos' });
+app.use('/dojos', dojosRoutes);
 
 export { app };
