@@ -9,12 +9,12 @@ dojosRoutes.post('/create', (request, response) => {
   createDojoController.handle(request, response);
 });
 
-dojosRoutes.get('/all', (request, responce) => {
-  listDojoController.handle(request, responce);
+dojosRoutes.get('/all', (request, response) => {
+  listDojoController.handle(request, response);
 });
 
-dojosRoutes.put('/update', (request, responce) => {
-  updateDojoController.handle(request, responce);
+dojosRoutes.put('/update', (request, response) => {
+  updateDojoController.handle(request, response);
 });
 
 export { dojosRoutes };
