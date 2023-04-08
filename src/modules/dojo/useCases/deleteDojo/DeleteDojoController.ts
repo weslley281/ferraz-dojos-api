@@ -14,7 +14,7 @@ class DeleteDojoController {
 
       const dojos = await this.deleteDojoUseCase.execute({ id_dojo });
 
-      return response.status(200).json(dojos);
+      return response.status(204).json(dojos);
     } catch (error: any) {
       console.error(`Erro ao delete dojo: ${error}`);
 

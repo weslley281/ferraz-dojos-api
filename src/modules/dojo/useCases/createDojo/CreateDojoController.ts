@@ -18,7 +18,6 @@ class CreateDojoController {
       country: z.string(),
       phone: z.string(),
       email: z.string(),
-      paid_out: z.boolean().optional(),
     });
 
     const id_dojo = randomUUID();
@@ -34,8 +33,9 @@ class CreateDojoController {
         country,
         phone,
         email,
-        paid_out,
       } = createDojoBodySchema.parse(request.body);
+
+      const paid_out = false;
 
       const obj = await this.createDojoUseCase.execute({
         id_dojo,

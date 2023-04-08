@@ -47,7 +47,7 @@ class UpdateDojoController {
         paid_out,
       });
 
-      return response.status(201).json(obj);
+      return response.status(200).json(obj);
     } catch (error: any) {
       console.error(`Erro ao alterar dojo: ${error}`);
 

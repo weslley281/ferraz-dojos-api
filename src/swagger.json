@@ -1,0 +1,111 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ferraz Dojos Api",
+    "description": "This is an application to server Ferraz Dojos Frontend",
+    "version": "1.0.0",
+    "termsOfService": "this API was developed only for its use in the frontend of Ferraz Dojos applications.",
+    "contact": {
+      "email": "weslleyhenrique800@gmail.com",
+      "name": "Weslley Henrique Vieira Ferraz",
+      "url": "weslleydesenvolvedorweb.com.br"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "local"
+    },
+    {
+      "url": "https://git.heroku.com/apibaoba.git",
+      "description": "hospedado"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Dojos",
+      "description": "Dojos management"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Dojos"],
+        "summary": "Create a new dojo",
+        "description": "To create a new dojo, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "dojo",
+                  "password",
+                  "address_line1",
+                  "address_line2",
+                  "city",
+                  "state",
+                  "country",
+                  "phone",
+                  "email"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "dojo": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "address_line1": {
+                    "type": "string"
+                  },
+                  "address_line2": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "dojo": "Dojo super top",
+                  "password": "123456",
+                  "address_line1": "Rua Fulano de tal, 123",
+                  "address_line2": "Quadra 12, Area 12",
+                  "city": "Cuiabá",
+                  "state": "Mato Grosso",
+                  "country": "Brasil",
+                  "phone": "65 99915-7130",
+                  "email": "dojotop@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  }
+}
