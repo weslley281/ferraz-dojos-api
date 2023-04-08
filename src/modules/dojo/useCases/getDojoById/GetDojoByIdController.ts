@@ -1,13 +1,18 @@
 import { AppError } from '../../../erros/Error';
-import { ListDojoUseCase } from './ListDojoUseCase';
 import { Request, Response } from 'express';
+import { GetDojoByIdUseCase } from './GetDojoByIdUseCase';
+import { z } from 'zod';
 
-class ListDojoController {
-  constructor(private listDojoUseCase: ListDojoUseCase) {}
+class GetDojoByIdController {
+  constructor(private getDojoByIdUseCase: GetDojoByIdUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
+    const getDojoBodySchema = z.object({ id_dojo: z.string() });
+
     try {
-      const dojos = await this.listDojoUseCase.execute();
+      const { id_dojo } = getDojoBodySchema.parse(request.params);
+
+      const dojos = await this.getDojoByIdUseCase.execute({ id_dojo });
 
       return response.status(200).json(dojos);
     } catch (error: any) {
@@ -22,4 +27,4 @@ class ListDojoController {
   }
 }
 
-export { ListDojoController };
+export { GetDojoByIdController };

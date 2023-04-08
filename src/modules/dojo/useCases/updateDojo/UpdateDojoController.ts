@@ -7,7 +7,7 @@ class UpdateDojoController {
   constructor(private updateDojoUseCase: UpdateDojoUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const createDojoBodySchema = z.object({
+    const updateDojoBodySchema = z.object({
       id_dojo: z.string(),
       dojo: z.string(),
       address_line1: z.string(),
@@ -32,7 +32,7 @@ class UpdateDojoController {
         phone,
         email,
         paid_out,
-      } = createDojoBodySchema.parse(request.body);
+      } = updateDojoBodySchema.parse(request.body);
 
       const obj = await this.updateDojoUseCase.execute({
         id_dojo,

@@ -8,35 +8,22 @@ class CreateDojoController {
   constructor(private createDojoUseCase: CreateDojoUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    // const createDojoBodySchema = z.object({
-    //   dojo: z.string(),
-    //   password: z.string(),
-    //   address_line1: z.string(),
-    //   address_line2: z.string(),
-    //   city: z.string(),
-    //   state: z.string(),
-    //   country: z.string(),
-    //   phone: z.string(),
-    //   email: z.string(),
-    //   paid_out: z.boolean().optional(),
-    // });
+    const createDojoBodySchema = z.object({
+      dojo: z.string(),
+      password: z.string(),
+      address_line1: z.string(),
+      address_line2: z.string(),
+      city: z.string(),
+      state: z.string(),
+      country: z.string(),
+      phone: z.string(),
+      email: z.string(),
+      paid_out: z.boolean().optional(),
+    });
 
     const id_dojo = randomUUID();
     console.log(request.body);
     try {
-      // const {
-      //   dojo,
-      //   password,
-      //   address_line1,
-      //   address_line2,
-      //   city,
-      //   state,
-      //   country,
-      //   phone,
-      //   email,
-      //   paid_out,
-      // } = createDojoBodySchema.parse(request.body);
-
       const {
         dojo,
         password,
@@ -48,7 +35,7 @@ class CreateDojoController {
         phone,
         email,
         paid_out,
-      } = request.body;
+      } = createDojoBodySchema.parse(request.body);
 
       const obj = await this.createDojoUseCase.execute({
         id_dojo,
