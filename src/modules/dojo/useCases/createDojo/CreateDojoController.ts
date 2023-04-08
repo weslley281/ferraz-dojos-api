@@ -22,7 +22,7 @@ class CreateDojoController {
     });
 
     const id_dojo = randomUUID();
-
+    console.log(request.body);
     try {
       const {
         dojo,

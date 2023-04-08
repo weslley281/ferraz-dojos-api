@@ -5,15 +5,15 @@ import { listDojoController } from '../modules/dojo/useCases/listaAllDojos';
 
 const dojosRoutes = Router();
 
-dojosRoutes.get('/', async (request, responce) => {
+dojosRoutes.post('/create', (request, response) => {
+  createDojoController.handle(request, response);
+});
+
+dojosRoutes.get('/all', (request, responce) => {
   listDojoController.handle(request, responce);
 });
 
-dojosRoutes.post('/', async (request, responce) => {
-  createDojoController.handle(request, responce);
-});
-
-dojosRoutes.put('/', async (request, responce) => {
+dojosRoutes.put('/update', (request, responce) => {
   updateDojoController.handle(request, responce);
 });
 
