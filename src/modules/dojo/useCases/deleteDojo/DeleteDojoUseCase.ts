@@ -6,20 +6,18 @@ interface IRequest {
   id_dojo: string;
 }
 
-class GetDojoByIdUseCase {
+class DeleteDojoUseCase {
   constructor(private dojoRepository: IDojoRepository) {}
 
-  async execute({ id_dojo }: IRequest): Promise<Dojo> {
+  async execute({ id_dojo }: IRequest): Promise<void> {
     try {
-      const dojo = await this.dojoRepository.findById(id_dojo);
-
-      if (!dojo) throw new Error('Dojo not exists');
+      const dojo = await this.dojoRepository.delete(id_dojo);
 
       return dojo;
     } catch (error) {
-      throw new AppError(`Cannot get Dojo: ${error}`);
+      throw new AppError(`Cannot delete Dojo: ${error}`);
     }
   }
 }
 
-export { GetDojoByIdUseCase };
+export { DeleteDojoUseCase };

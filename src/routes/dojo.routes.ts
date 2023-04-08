@@ -4,6 +4,7 @@ import { updateDojoController } from '../modules/dojo/useCases/updateDojo';
 import { listDojoController } from '../modules/dojo/useCases/listaAllDojos';
 import { getDojoByIdController } from '../modules/dojo/useCases/getDojoById';
 import { getDojoByEmailController } from '../modules/dojo/useCases/getDojoByEmail';
+import { deleteDojoController } from '../modules/dojo/useCases/deleteDojo';
 
 const dojosRoutes = Router();
 
@@ -25,5 +26,9 @@ dojosRoutes.get('/id/:id_dojo', (request, response) => {
 
 dojosRoutes.get('/email/:email', (request, response) => {
   getDojoByEmailController.handle(request, response);
+});
+
+dojosRoutes.delete('/delete/:id_dojo', (request, response) => {
+  deleteDojoController.handle(request, response);
 });
 export { dojosRoutes };

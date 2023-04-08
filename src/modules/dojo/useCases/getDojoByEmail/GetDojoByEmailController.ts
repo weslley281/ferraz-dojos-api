@@ -16,7 +16,7 @@ class GetDojoByEmailController {
 
       return response.status(200).json(dojos);
     } catch (error: any) {
-      console.error(`Erro ao cadastrar dojo: ${error}`);
+      console.error(`Error to get dojo dojo: ${error}`);
 
       if (error instanceof AppError) {
         return response.status(error.statusCode).json({ error: error.message });

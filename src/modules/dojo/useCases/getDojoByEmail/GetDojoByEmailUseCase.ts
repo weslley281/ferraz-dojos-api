@@ -17,7 +17,7 @@ class GetDojoByEmailUseCase {
 
       return dojo;
     } catch (error) {
-      throw new AppError(`Cannot update Dojo: ${error}`);
+      throw new AppError(`Cannot get Dojo: ${error}`);
     }
   }
 }

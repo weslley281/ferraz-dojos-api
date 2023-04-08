@@ -13,7 +13,7 @@ class ListDojoUseCase {
 
       return dojos;
     } catch (error) {
-      throw new AppError(`Cannot update Dojo: ${error}`);
+      throw new AppError(`Cannot get Dojo: ${error}`);
     }
   }
 }
