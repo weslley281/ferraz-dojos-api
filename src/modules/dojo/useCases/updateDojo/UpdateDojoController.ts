@@ -17,7 +17,6 @@ class UpdateDojoController {
       country: z.string(),
       phone: z.string(),
       email: z.string(),
-      paid_out: z.boolean().optional(),
     });
 
     try {
@@ -31,8 +30,9 @@ class UpdateDojoController {
         country,
         phone,
         email,
-        paid_out,
       } = updateDojoBodySchema.parse(request.body);
+
+      const paid_out = false;
 
       const obj = await this.updateDojoUseCase.execute({
         id_dojo,
