@@ -8,6 +8,8 @@ createTableDojo(dojoModel);
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/dojos', dojosRoutes);
 
 app.use((req, res, next) => {
