@@ -2,8 +2,8 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   NODE_ENV: z.enum(['dev', 'test', 'production']),
-  HOST: z.string().default('127.0.0.1'),
-  PORT: z.coerce.number().default(5000),
+  HOST: z.string().default('192.168.1.6'),
+  PORT: z.coerce.number().default(5001),
 });
 
 const _env = envSchema.safeParse(process.env);

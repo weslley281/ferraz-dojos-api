@@ -1,16 +1,13 @@
 import { AppError } from '../../../erros/Error';
 import { CreateDojoUseCase } from './CreateDojoUseCase';
-import { FastifyRequest, FastifyReply } from 'fastify';
+import { Request, Response } from 'express';
 import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
 
 class CreateDojoController {
   constructor(private createDojoUseCase: CreateDojoUseCase) {}
 
-  async handle(
-    request: FastifyRequest,
-    response: FastifyReply
-  ): Promise<FastifyReply> {
+  async handle(request: Request, response: Response): Promise<Response> {
     const createDojoBodySchema = z.object({
       dojo: z.string(),
       password: z.string(),
@@ -59,7 +56,7 @@ class CreateDojoController {
       console.error(`Erro ao cadastrar dojo: ${error}`);
 
       if (error instanceof AppError) {
-        return response.status(error.statusCode).send({ error: error.message });
+        return response.status(error.statusCode).json({ error: error.message });
       }
 
       return response.status(400).send({ error: error.error });

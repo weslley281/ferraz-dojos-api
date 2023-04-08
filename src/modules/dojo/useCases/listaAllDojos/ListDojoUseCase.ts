@@ -9,17 +9,11 @@ class ListDojoUseCase {
     try {
       const dojos = await this.dojoRepository.list();
 
+      if (!dojos) throw new Error('Dojo not exists');
+
       return dojos;
     } catch (error) {
-      console.error(`Error listing dojos: ${error}`);
-
-      if (error instanceof AppError) {
-        throw error;
-      } else if (error instanceof Error) {
-        throw new AppError(`Error listing dojos: ${error.message}`);
-      } else {
-        throw new AppError(`Error listing dojos`);
-      }
+      throw new AppError(`Cannot update Dojo: ${error}`);
     }
   }
 }

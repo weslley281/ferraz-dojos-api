@@ -117,9 +117,8 @@ class DojoRepository implements IDojoRepository {
   }
 
   async list(): Promise<Dojo[]> {
-    const dojos = await dojoModel.findAll();
-
-    return dojos.map((dojo) => dojo.toJSON() as Dojo);
+    const dojos: any = await dojoModel.findAll({});
+    return dojos;
   }
 
   async delete(id_dojo: string): Promise<void> {
