@@ -26,7 +26,7 @@ app.use('/graduations', graduationsRoutes);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://localhost');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
