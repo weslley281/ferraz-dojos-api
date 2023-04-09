@@ -1,9 +1,13 @@
-import { DojoRepository } from '../../repositories/implementations/GraduationRepository';
-import { GetDojoByIdController } from './GetGraduationByIdController';
-import { GetDojoByIdUseCase } from './GetGraduationByIdUseCase';
+import { GraduationRepository } from '../../repositories/implementations/GraduationRepository';
+import { GetGraduationByIdController } from './GetGraduationByIdController';
+import { GetGraduationByIdUseCase } from './GetGraduationByIdUseCase';
 
-const dojoRepository = DojoRepository.getInstance();
-const getDojoByIdUseCase = new GetDojoByIdUseCase(dojoRepository);
-const getDojoByIdController = new GetDojoByIdController(getDojoByIdUseCase);
+const graduationRepository = GraduationRepository.getInstance();
+const getGraduationByIdUseCase = new GetGraduationByIdUseCase(
+  graduationRepository
+);
+const getGraduationByIdController = new GetGraduationByIdController(
+  getGraduationByIdUseCase
+);
 
-export { getDojoByIdController };
+export { getGraduationByIdController };

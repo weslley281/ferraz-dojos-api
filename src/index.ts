@@ -6,15 +6,22 @@ import { createTableDojo, dojoModel } from './database/models/dojosModel';
 import { dojosRoutes } from './routes/dojo.routes';
 import swaggerFile from './swagger.json';
 import { AppError } from './modules/erros/Error';
+import { graduationsRoutes } from './routes/graduation.routes';
+import {
+  createTableGraduation,
+  graduationModel,
+} from './database/models/graduationsModel';
 
 createConnectionDataBase();
 createTableDojo(dojoModel);
+createTableGraduation(graduationModel);
 
 const app = express();
 
 app.use(express.json());
 
 app.use('/dojos', dojosRoutes);
+app.use('/graduations', graduationsRoutes);
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
