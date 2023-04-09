@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { AppError } from '../modules/erros/Error';
 import { DojoRepository } from '../modules/dojo/repositories/implementations/DojoRepository';
+import { env } from '../env';
 
 interface TokenPayload {
   sub: string;
@@ -22,7 +23,7 @@ export async function ensureAuthenticated(
     }
 
     const [, token] = authHeader.split(' ');
-    const { sub: id_dojo } = jwt.verify(token, 'ferrazdojos') as TokenPayload;
+    const { sub: id_dojo } = jwt.verify(token, env.JWT_SECRET) as TokenPayload;
 
     const dojoRepository = new DojoRepository();
     const dojo = await dojoRepository.findById(id_dojo);

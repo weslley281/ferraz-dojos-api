@@ -2,6 +2,7 @@ import { AppError } from '../../../erros/Error';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { IDojoRepository } from '../../repositories/IDojoRepository';
+import { env } from '../../../../env';
 
 interface IRequest {
   email: string;
@@ -41,7 +42,7 @@ class AuthenticateUseCase {
 
       if (!passwordMatch) throw new Error('E-mail ou senha incorretos!');
 
-      const token = sign({}, 'ferrazdojos', {
+      const token = sign({}, env.JWT_SECRET, {
         subject: dojo.id_dojo,
         expiresIn: '7d',
       });

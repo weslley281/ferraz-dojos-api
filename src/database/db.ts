@@ -1,11 +1,17 @@
 const mysql = require('mysql2');
 
 import { Sequelize } from 'sequelize';
+import { env } from '../env';
 
-const connection = new Sequelize('ferrazdojos', 'ferrazdojos', 'Wesv@g28', {
-  host: 'ferrazdojos.mysql.uhserver.com',
-  dialect: 'mysql',
-});
+const connection = new Sequelize(
+  env.DATABASE_HOST,
+  env.DATABASE_USER,
+  env.DATABASE_PASSWORD,
+  {
+    host: env.DATABASE_URL,
+    dialect: 'mysql',
+  }
+);
 
 async function createConnectionDataBase() {
   try {
