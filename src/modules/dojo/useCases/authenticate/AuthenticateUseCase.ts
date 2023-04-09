@@ -24,14 +24,14 @@ class AuthenticateUseCase {
     try {
       const dojo = await this.dojoRepository.findByEmail(email);
 
-      if (!dojo) throw new Error('Email or password incorrect!');
+      if (!dojo) throw new Error('E-mail ou senha incorretos!');
 
       if (
         typeof dojo.id_dojo !== 'string' ||
         typeof dojo.dojo !== 'string' ||
         typeof dojo.email !== 'string'
       ) {
-        throw new Error('Invalid Dojo object!');
+        throw new Error('Objeto Dojo inválido!');
       }
 
       const passwordMatch = await compare(
@@ -39,7 +39,7 @@ class AuthenticateUseCase {
         dojo.password ? dojo.password : ''
       );
 
-      if (!passwordMatch) throw new Error('Email or password incorrect!');
+      if (!passwordMatch) throw new Error('E-mail ou senha incorretos!');
 
       const token = sign({}, 'ferrazdojos', {
         subject: dojo.id_dojo,
@@ -57,7 +57,7 @@ class AuthenticateUseCase {
 
       return tokenReturn;
     } catch (error) {
-      throw new AppError(`Cannot authtenticate Dojo: ${error}`);
+      throw new AppError(`Não foi possível autenticar o Dojo: ${error}`);
     }
   }
 }
