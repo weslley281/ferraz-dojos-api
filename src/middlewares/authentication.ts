@@ -11,40 +11,36 @@ interface TokenPayload {
 }
 
 export async function ensureAuthenticated(
-  authenticateUseCase: AuthenticateUseCase
+  request: Request,
+  response: Response,
+  next: NextFunction
 ) {
-  return async function (
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
-    const authHeader = request.headers.authorization;
+  const authHeader = request.headers.authorization;
 
-    if (!authHeader) {
-      throw new AppError('JWT token is missing', 401);
+  if (!authHeader) {
+    throw new AppError('JWT token is missing', 401);
+  }
+
+  const [, token] = authHeader.split(' ');
+
+  try {
+    const { sub: id_dojo } = jwt.verify(token, 'ferrazdojos') as TokenPayload;
+
+    const dojoRepository = new DojoRepository();
+    const dojo = await dojoRepository.findById(id_dojo);
+
+    if (!dojo) {
+      throw new AppError('Dojo not found', 401);
     }
 
-    const [, token] = authHeader.split(' ');
+    // request.dojo = {
+    //   id_dojo: dojo.id_dojo,
+    //   dojo: dojo.dojo,
+    //   email: dojo.email,
+    // };
 
-    try {
-      const { sub: id_dojo } = jwt.verify(token, 'ferrazdojos') as TokenPayload;
-
-      const dojoRepository = new DojoRepository();
-      const dojo = await dojoRepository.findById(id_dojo);
-
-      if (!dojo) {
-        throw new AppError('Dojo not found', 401);
-      }
-
-      // request.dojo = {
-      //   id_dojo: dojo.id_dojo,
-      //   dojo: dojo.dojo,
-      //   email: dojo.email,
-      // };
-
-      return next();
-    } catch (error) {
-      throw new AppError('Invalid JWT token', 401);
-    }
-  };
+    return next();
+  } catch (error) {
+    throw new AppError('Invalid JWT token', 401);
+  }
 }
