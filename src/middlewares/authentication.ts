@@ -14,32 +14,25 @@ export async function ensureAuthenticated(
   response: Response,
   next: NextFunction
 ) {
-  const authHeader = request.headers.authorization;
-
-  if (!authHeader) {
-    throw new AppError('JWT token is missing', 401);
-  }
-
-  const [, token] = authHeader.split(' ');
-
   try {
+    const authHeader = request.headers.authorization;
+
+    if (!authHeader) {
+      throw new AppError('JWT token is missing', 401);
+    }
+
+    const [, token] = authHeader.split(' ');
     const { sub: id_dojo } = jwt.verify(token, 'ferrazdojos') as TokenPayload;
 
     const dojoRepository = new DojoRepository();
     const dojo = await dojoRepository.findById(id_dojo);
 
     if (!dojo) {
-      throw new AppError('Dojo not found', 401);
+      throw new AppError('Dojo not found', 404);
     }
-
-    // request.dojo = {
-    //   id_dojo: dojo.id_dojo,
-    //   dojo: dojo.dojo,
-    //   email: dojo.email,
-    // };
 
     return next();
   } catch (error) {
-    throw new AppError('Invalid JWT token', 401);
+    throw error;
   }
 }

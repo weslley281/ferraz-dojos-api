@@ -1,3 +1,4 @@
+import { ICreateDojoDTO } from '../DTO/IDojoDTO';
 import { Dojo } from '../models/Dojo';
 
 interface IDojoRepository {

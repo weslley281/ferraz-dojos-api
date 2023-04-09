@@ -13,3 +13,5 @@ interface ICreateDojoDTO {
   updatedAt?: Date;
   created_at?: Date;
 }
+
+export { ICreateDojoDTO };

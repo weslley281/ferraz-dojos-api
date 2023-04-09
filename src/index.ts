@@ -1,10 +1,11 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+import swaggerUi from 'swagger-ui-express';
+
 import { createConnectionDataBase } from './database/db';
 import { createTableDojo, dojoModel } from './database/models/dojosModel';
 import { dojosRoutes } from './routes/dojo.routes';
-import swaggerUi from 'swagger-ui-express';
-import path from 'path';
 import swaggerFile from './swagger.json';
+import { AppError } from './modules/erros/Error';
 
 createConnectionDataBase();
 createTableDojo(dojoModel);
@@ -25,5 +26,15 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use(
+  (error: Error, request: Request, response: Response, next: NextFunction) => {
+    if (error instanceof AppError) {
+      return response.status(error.statusCode).json({ error: error.message });
+    }
+
+    return response.status(500).json({ error: error.message || error.stack });
+  }
+);
 
 export { app };
