@@ -182,74 +182,95 @@
         }
       }
     },
-    "/dojos/id": {
+    "/dojos/id/{id_dojo}": {
       "get": {
         "tags": ["Dojos"],
         "summary": "Get a dojo by id",
         "description": "To get a dojo by id, add this fields in the request body.",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "required": [
-                  "id_dojo",
-                  "dojo",
-                  "password",
-                  "address_line1",
-                  "address_line2",
-                  "city",
-                  "state",
-                  "country",
-                  "phone",
-                  "email"
-                ],
-                "type": "object",
-                "properties": {
-                  "id_dojo": {
-                    "type": "string"
-                  },
-                  "dojo": {
-                    "type": "string"
-                  },
-                  "address_line1": {
-                    "type": "string"
-                  },
-                  "address_line2": {
-                    "type": "string"
-                  },
-                  "city": {
-                    "type": "string"
-                  },
-                  "state": {
-                    "type": "string"
-                  },
-                  "country": {
-                    "type": "string"
-                  },
-                  "phone": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  }
-                },
-                "example": {
-                  "id_dojo": "80b532dd-30db-4be8-a6f9-7e014f730043",
-                  "dojo": "Dojo super top",
-                  "password": "123456",
-                  "address_line1": "Rua Fulano de tal, 123",
-                  "address_line2": "Quadra 12, Area 12",
-                  "city": "Várzea Grande",
-                  "state": "Mato Grosso",
-                  "country": "Brasil",
-                  "phone": "65 99915-7130",
-                  "email": "dojotop@gmail.com"
+        "parameters": [
+          {
+            "in": "path",
+            "name": "dojos",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_dojo"],
+              "type": "object",
+              "properties": {
+                "id_dojo": {
+                  "type": "string"
                 }
               }
             }
           }
-        },
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/dojos/email/{email}": {
+      "get": {
+        "tags": ["Dojos"],
+        "summary": "Get a dojo by email",
+        "description": "To get a dojo by email, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "dojos",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "dojotop@gmail.com",
+            "schema": {
+              "required": ["email"],
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/dojos/delete/{id_dojo}": {
+      "delete": {
+        "tags": ["Dojos"],
+        "summary": "Delete a dojo by id",
+        "description": "To delete a dojo by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "dojos",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_dojo"],
+              "type": "object",
+              "properties": {
+                "id_dojo": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Updated"

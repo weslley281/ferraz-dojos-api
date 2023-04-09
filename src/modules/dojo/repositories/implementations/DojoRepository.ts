@@ -7,8 +7,6 @@ import { Op } from 'sequelize';
 class DojoRepository implements IDojoRepository {
   private static instance: DojoRepository;
 
-  private constructor() {}
-
   public static getInstance(): DojoRepository {
     if (!DojoRepository.instance) {
       DojoRepository.instance = new DojoRepository();
@@ -109,11 +107,9 @@ class DojoRepository implements IDojoRepository {
     return obj;
   }
 
-  async findByEmail(email: string): Promise<Dojo | null> {
-    const dojo = await dojoModel.findOne({ where: { email } });
-    console.log(`O resultado de busca do email é ${dojo}`);
-
-    return dojo ? (dojo.toJSON() as Dojo) : null;
+  async findByEmail(email: string): Promise<Dojo> {
+    const dojo: any = await dojoModel.findOne({ where: { email } });
+    return dojo;
   }
 
   async list(): Promise<Dojo[]> {

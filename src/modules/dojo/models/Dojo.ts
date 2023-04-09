@@ -1,7 +1,7 @@
 class Dojo {
   id_dojo?: string | undefined;
   dojo: string | undefined;
-  password?: string | undefined;
+  password?: string;
   address_line1: string | undefined;
   address_line2: string | undefined;
   city: string | undefined;
