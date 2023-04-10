@@ -1,6 +1,8 @@
-interface ICreateInstructorDTO {
-  id_instructor?: string;
-  instructor: string;
+interface ICreateStudentDTO {
+  id_student?: string;
+  student: string;
+  responsible: string;
+  responsible_phone: string;
   address_line1: string;
   address_line2: string;
   city: string;
@@ -14,4 +16,4 @@ interface ICreateInstructorDTO {
   created_at?: Date;
 }
 
-export { ICreateInstructorDTO };
+export { ICreateStudentDTO };

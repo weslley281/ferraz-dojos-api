@@ -1,10 +1,10 @@
-import { ICreateInstructorDTO } from '../DTO/ICreateStudentDTO';
-import { Instructor } from '../models/Student';
+import { ICreateStudentDTO } from '../DTO/ICreateStudentDTO';
+import { Student } from '../models/Student';
 
-interface IInstructorRepository {
+interface IStudentRepository {
   create({
-    id_instructor,
-    instructor,
+    id_student,
+    student,
     phone,
     email,
     address_line1,
@@ -14,10 +14,10 @@ interface IInstructorRepository {
     state,
     id_graduation,
     id_dojo,
-  }: ICreateInstructorDTO): Promise<Instructor>;
+  }: ICreateStudentDTO): Promise<Student>;
   update({
-    id_instructor,
-    instructor,
+    id_student,
+    student,
     phone,
     email,
     address_line1,
@@ -27,11 +27,11 @@ interface IInstructorRepository {
     state,
     id_graduation,
     id_dojo,
-  }: ICreateInstructorDTO): Promise<Instructor>;
-  findById(id_graduation: string): Promise<Instructor>;
-  findByEmail(email: string): Promise<Instructor>;
-  delete(id_graduation: string): Promise<void>;
-  list(id_dojo: string): Promise<Instructor[]>;
+  }: ICreateStudentDTO): Promise<Student>;
+  findById(id_student: string): Promise<Student>;
+  findByEmail(email: string): Promise<Student>;
+  delete(id_student: string): Promise<void>;
+  list(id_dojo: string): Promise<Student[]>;
 }
 
-export { IInstructorRepository };
+export { IStudentRepository };

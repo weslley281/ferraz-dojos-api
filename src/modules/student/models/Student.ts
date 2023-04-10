@@ -1,6 +1,8 @@
-class Instructor {
-  id_instructor: string | undefined;
-  instructor: string | undefined;
+class Student {
+  id_student?: string | undefined;
+  student: string | undefined;
+  responsible: string | undefined;
+  responsible_phone: string | undefined;
   address_line1: string | undefined;
   address_line2: string | undefined;
   city: string | undefined;
@@ -10,8 +12,8 @@ class Instructor {
   email?: string | undefined;
   id_dojo: string | undefined;
   id_graduation: string | undefined;
-  updatedAt?: Date | undefined;
-  created_at?: Date | undefined;
+  updatedAt?: Date;
+  created_at?: Date;
 }
 
-export { Instructor };
+export { Student };

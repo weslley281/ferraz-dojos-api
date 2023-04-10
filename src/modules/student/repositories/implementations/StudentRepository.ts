@@ -1,24 +1,24 @@
-import { instructorModel } from '../../../../database/models/instructorsModel copy';
+import { studentModel } from '../../../../database/models/studentsModel';
 import { AppError } from '../../../erros/Error';
-import { ICreateInstructorDTO } from '../../DTO/ICreateStudentDTO';
-import { Instructor } from '../../models/Student';
-import { IInstructorRepository } from '../IStudentRepository';
+import { ICreateStudentDTO } from '../../DTO/ICreateStudentDTO';
+import { Student } from '../../models/Student';
+import { IStudentRepository } from '../IStudentRepository';
 import { Op } from 'sequelize';
 
-class InstructorRepository implements IInstructorRepository {
-  private static instance: InstructorRepository;
+class StudentRepository implements IStudentRepository {
+  private static instance: StudentRepository;
 
-  public static getInstance(): InstructorRepository {
-    if (!InstructorRepository.instance) {
-      InstructorRepository.instance = new InstructorRepository();
+  public static getInstance(): StudentRepository {
+    if (!StudentRepository.instance) {
+      StudentRepository.instance = new StudentRepository();
     }
 
-    return InstructorRepository.instance;
+    return StudentRepository.instance;
   }
 
   async create({
-    id_instructor,
-    instructor,
+    id_student,
+    student,
     phone,
     email,
     address_line1,
@@ -28,10 +28,10 @@ class InstructorRepository implements IInstructorRepository {
     state,
     id_graduation,
     id_dojo,
-  }: ICreateInstructorDTO): Promise<Instructor> {
-    const obj: any = await instructorModel.create({
-      id_instructor,
-      instructor,
+  }: ICreateStudentDTO): Promise<Student> {
+    const obj: any = await studentModel.create({
+      id_student,
+      student,
       phone,
       email,
       address_line1,
@@ -43,12 +43,12 @@ class InstructorRepository implements IInstructorRepository {
       id_dojo,
     });
 
-    return obj.toJSON() as Instructor;
+    return obj.toJSON() as Student;
   }
 
   async update({
-    id_instructor,
-    instructor,
+    id_student,
+    student,
     phone,
     email,
     address_line1,
@@ -58,11 +58,11 @@ class InstructorRepository implements IInstructorRepository {
     state,
     id_graduation,
     id_dojo,
-  }: ICreateInstructorDTO): Promise<Instructor> {
-    const [rowsAffected] = await instructorModel.update(
+  }: ICreateStudentDTO): Promise<Student> {
+    const [rowsAffected] = await studentModel.update(
       {
-        id_instructor,
-        instructor,
+        id_student,
+        student,
         phone,
         email,
         address_line1,
@@ -74,7 +74,7 @@ class InstructorRepository implements IInstructorRepository {
         id_dojo,
       },
       {
-        where: { id_instructor },
+        where: { id_student },
       }
     );
 
@@ -82,48 +82,48 @@ class InstructorRepository implements IInstructorRepository {
       throw new AppError('Dojo not found.', 404);
     }
 
-    const updatedInstructor = await instructorModel.findOne({
-      where: { id_instructor },
+    const updatedStudent = await studentModel.findOne({
+      where: { id_student },
     });
 
-    return updatedInstructor?.toJSON() as Instructor;
+    return updatedStudent?.toJSON() as Student;
   }
 
-  async findById(id_instructor: string): Promise<Instructor> {
-    const obj: any = await instructorModel.findOne({
-      where: { id_instructor },
+  async findById(id_student: string): Promise<Student> {
+    const obj: any = await studentModel.findOne({
+      where: { id_student },
     });
 
     return obj;
   }
 
-  async findByEmail(email: string): Promise<Instructor> {
-    const obj: any = await instructorModel.findOne({
+  async findByEmail(email: string): Promise<Student> {
+    const obj: any = await studentModel.findOne({
       where: { email },
     });
 
     return obj;
   }
 
-  async list(id_dojo: string): Promise<Instructor[]> {
-    const instructors: any = await instructorModel.findAll({
+  async list(id_dojo: string): Promise<Student[]> {
+    const students: any = await studentModel.findAll({
       where: { id_dojo },
     });
-    return instructors;
+    return students;
   }
 
-  async delete(id_instructor: string): Promise<void> {
-    const rowsAffected = await instructorModel.destroy({
-      where: { id_instructor },
+  async delete(id_student: string): Promise<void> {
+    const rowsAffected = await studentModel.destroy({
+      where: { id_student },
     });
 
     if (rowsAffected === 0) {
-      throw new AppError('Instructor not found.', 404);
+      throw new AppError('Student not found.', 404);
     }
   }
 
-  async search(searchTerm: string): Promise<Instructor[]> {
-    const dojos = await instructorModel.findAll({
+  async search(searchTerm: string): Promise<Student[]> {
+    const dojos = await studentModel.findAll({
       where: {
         [Op.or]: [
           { dojo: { [Op.iLike]: `%${searchTerm}%` } },
@@ -133,8 +133,8 @@ class InstructorRepository implements IInstructorRepository {
       },
     });
 
-    return dojos.map((dojo) => dojo.toJSON() as Instructor);
+    return dojos.map((dojo) => dojo.toJSON() as Student);
   }
 }
 
-export { InstructorRepository };
+export { StudentRepository };
