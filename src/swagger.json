@@ -29,6 +29,10 @@
     {
       "name": "Graduations",
       "description": "Graduations management"
+    },
+    {
+      "name": "Instructors",
+      "description": "Instructors management"
     }
   ],
   "paths": {
@@ -255,12 +259,12 @@
     "/dojos/all": {
       "get": {
         "tags": ["Dojos"],
-        "summary": "Get all graduations by id",
-        "description": "To get a graduation by id, add this fields in the request body.",
+        "summary": "Get all dojos",
+        "description": "To get all dojos, add this fields in the request body.",
         "parameters": [
           {
             "in": "path",
-            "name": "graduation",
+            "name": "dojos",
             "required": true,
             "allowEmptyValue": false,
             "schema": {
@@ -487,6 +491,304 @@
               "type": "object",
               "properties": {
                 "id_graduation": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/instructors/create": {
+      "post": {
+        "tags": ["Instructors"],
+        "summary": "Create a new instructor",
+        "description": "To create a new instructor, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "instructor",
+                  "id_graduation",
+                  "address_line1",
+                  "address_line2",
+                  "city",
+                  "state",
+                  "country",
+                  "phone",
+                  "email",
+                  "id_dojo"
+                ],
+                "type": "object",
+                "properties": {
+                  "instructor": {
+                    "type": "string"
+                  },
+                  "id_graduation": {
+                    "type": "string"
+                  },
+                  "address_line1": {
+                    "type": "string"
+                  },
+                  "address_line2": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "id_dojo": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "instructor": "Fulano de Tal",
+                  "id_graduation": "sdmdm83bnjn38ds3",
+                  "address_line1": "Rua Fulano de tal, 123",
+                  "address_line2": "Quadra 12, Area 12",
+                  "city": "Cuiabá",
+                  "state": "Mato Grosso",
+                  "country": "Brasil",
+                  "phone": "(65) 999157130",
+                  "email": "fulano@gmail.com",
+                  "id_dojo": "kdmfkmed090m320m"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/instructors/update": {
+      "put": {
+        "tags": ["Instructors"],
+        "summary": "Update a instructor",
+        "description": "To update a instructor, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "id_instructor",
+                  "instructor",
+                  "id_graduation",
+                  "address_line1",
+                  "address_line2",
+                  "city",
+                  "state",
+                  "country",
+                  "phone",
+                  "email",
+                  "id_dojo"
+                ],
+                "type": "object",
+                "properties": {
+                  "id_instructor": {
+                    "type": "string"
+                  },
+                  "instructor": {
+                    "type": "string"
+                  },
+                  "id_graduation": {
+                    "type": "string"
+                  },
+                  "address_line1": {
+                    "type": "string"
+                  },
+                  "address_line2": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "id_dojo": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id_instructor": "80b532dd-30db-4be8-a6f9-7e014f730043",
+                  "instructor": "Fulano de Tal",
+                  "id_graduation": "sdmdm83bnjn38ds3",
+                  "address_line1": "Rua Fulano de tal, 123",
+                  "address_line2": "Quadra 12, Area 12",
+                  "city": "Cuiabá",
+                  "state": "Mato Grosso",
+                  "country": "Brasil",
+                  "phone": "(65) 999157130",
+                  "email": "fulano@gmail.com",
+                  "id_dojo": "kdmfkmed090m320m"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/instructors/id/{id_instructor}": {
+      "get": {
+        "tags": ["Instructors"],
+        "summary": "Get a instructor by id",
+        "description": "To get a instructor by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instructors id",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_instructor"],
+              "type": "object",
+              "properties": {
+                "id_instructor": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/instructors/email/{email}": {
+      "get": {
+        "tags": ["Instructors"],
+        "summary": "Get a instructor by email",
+        "description": "To get a instructor by email, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instructors email",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "dojotop@gmail.com",
+            "schema": {
+              "required": ["email"],
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/instructors/all/{id_dojo}": {
+      "get": {
+        "tags": ["Instructors"],
+        "summary": "Get all instructors by id dojo",
+        "description": "To get all instructors by id dojo, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instructor",
+            "required": true,
+            "allowEmptyValue": false,
+            "schema": {
+              "required": ["id_dojo"],
+              "type": "object",
+              "properties": {
+                "id_dojo": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/instructors/delete/{id_instructor}": {
+      "delete": {
+        "tags": ["Instructors"],
+        "summary": "Delete a instructor by id",
+        "description": "To delete a instructor by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "instructors id",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_instructor"],
+              "type": "object",
+              "properties": {
+                "id_instructor": {
                   "type": "string"
                 }
               }

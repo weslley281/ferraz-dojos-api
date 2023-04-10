@@ -8,7 +8,7 @@ import { getGraduationByIdController } from '../modules/graduation/useCases/getG
 
 const graduationsRoutes = Router();
 
-graduationsRoutes.use(ensureAuthenticated);
+// graduationsRoutes.use(ensureAuthenticated);
 
 graduationsRoutes.post('/create', (request: Request, response: Response) => {
   createGraduationController.handle(request, response);
