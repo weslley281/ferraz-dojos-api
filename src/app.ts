@@ -13,10 +13,20 @@ import {
 } from './database/models/graduationsModel';
 import { instructorsRoutes } from './routes/instructor.routes';
 import { studentsRoutes } from './routes/student.routes';
+import {
+  createTableInstructor,
+  instructorModel,
+} from './database/models/instructorsModel copy';
+import {
+  createTableStudent,
+  studentModel,
+} from './database/models/studentsModel';
 
 createConnectionDataBase();
 createTableDojo(dojoModel);
 createTableGraduation(graduationModel);
+createTableInstructor(instructorModel);
+createTableStudent(studentModel);
 
 const app = express();
 

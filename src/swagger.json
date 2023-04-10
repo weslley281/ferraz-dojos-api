@@ -33,6 +33,10 @@
     {
       "name": "Instructors",
       "description": "Instructors management"
+    },
+    {
+      "name": "Students",
+      "description": "Students management"
     }
   ],
   "paths": {
@@ -789,6 +793,334 @@
               "type": "object",
               "properties": {
                 "id_instructor": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/students/create": {
+      "post": {
+        "tags": ["Students"],
+        "summary": "Create a new student",
+        "description": "To create a new student, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "student",
+                  "id_graduation",
+                  "address_line1",
+                  "address_line2",
+                  "city",
+                  "state",
+                  "country",
+                  "phone",
+                  "email",
+                  "id_dojo",
+                  "birthday",
+                  "responsible",
+                  "responsible_phone"
+                ],
+                "type": "object",
+                "properties": {
+                  "instructor": {
+                    "type": "string"
+                  },
+                  "id_graduation": {
+                    "type": "string"
+                  },
+                  "address_line1": {
+                    "type": "string"
+                  },
+                  "address_line2": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "id_dojo": {
+                    "type": "string"
+                  },
+                  "birthday": {
+                    "type": "string"
+                  },
+                  "responsible": {
+                    "type": "string"
+                  },
+                  "responsible_phone": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "student": "Fulano de Tal",
+                  "id_student": "sdmdm83bnjn38ds3",
+                  "address_line1": "Rua Fulano de tal, 123",
+                  "address_line2": "Quadra 12, Area 12",
+                  "city": "Cuiabá",
+                  "state": "Mato Grosso",
+                  "country": "Brasil",
+                  "phone": "(65) 999157130",
+                  "email": "fulano@gmail.com",
+                  "id_dojo": "kdmfkmed090m320m",
+                  "birthday": "28-11-1995",
+                  "responsible": "Cicrano de Tal",
+                  "responsible_phone": "(65) 98123-3996"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/students/update": {
+      "put": {
+        "tags": ["Students"],
+        "summary": "Update a student",
+        "description": "To update a student, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "id_student",
+                  "student",
+                  "id_graduation",
+                  "address_line1",
+                  "address_line2",
+                  "city",
+                  "state",
+                  "country",
+                  "phone",
+                  "email",
+                  "id_dojo",
+                  "birthday",
+                  "responsible",
+                  "responsible_phone"
+                ],
+                "type": "object",
+                "properties": {
+                  "id_student": {
+                    "type": "string"
+                  },
+                  "student": {
+                    "type": "string"
+                  },
+                  "id_graduation": {
+                    "type": "string"
+                  },
+                  "address_line1": {
+                    "type": "string"
+                  },
+                  "address_line2": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "id_dojo": {
+                    "type": "string"
+                  },
+                  "birthday": {
+                    "type": "string"
+                  },
+                  "responsible": {
+                    "type": "string"
+                  },
+                  "responsible_phone": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id_student": "80b532dd-30db-4be8-a6f9-7e014f730043",
+                  "student": "Fulano de Tal",
+                  "id_graduation": "sdmdm83bnjn38ds3",
+                  "address_line1": "Rua Fulano de tal, 123",
+                  "address_line2": "Quadra 12, Area 12",
+                  "city": "Cuiabá",
+                  "state": "Mato Grosso",
+                  "country": "Brasil",
+                  "phone": "(65) 999157130",
+                  "email": "fulano@gmail.com",
+                  "id_dojo": "kdmfkmed090m320m",
+                  "birthday": "",
+                  "responsible": "",
+                  "responsible_phone": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/students/id/{id_student}": {
+      "get": {
+        "tags": ["Students"],
+        "summary": "Get a student by id",
+        "description": "To get a student by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "students id",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_instructor"],
+              "type": "object",
+              "properties": {
+                "id_student": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/students/email/{email}": {
+      "get": {
+        "tags": ["Students"],
+        "summary": "Get a student by email",
+        "description": "To get a student by email, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "students email",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "student@gmail.com",
+            "schema": {
+              "required": ["email"],
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/students/all/{id_dojo}": {
+      "get": {
+        "tags": ["Students"],
+        "summary": "Get all students by id dojo",
+        "description": "To get all students by id dojo, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "student",
+            "required": true,
+            "allowEmptyValue": false,
+            "schema": {
+              "required": ["id_dojo"],
+              "type": "object",
+              "properties": {
+                "id_dojo": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/students/delete/{id_student}": {
+      "delete": {
+        "tags": ["Students"],
+        "summary": "Delete a student by id",
+        "description": "To delete a student by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "students id",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_student"],
+              "type": "object",
+              "properties": {
+                "id_student": {
                   "type": "string"
                 }
               }
