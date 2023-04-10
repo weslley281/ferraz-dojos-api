@@ -5,6 +5,7 @@ import { updateInstructorController } from '../modules/instructor/useCases/updat
 import { listInstructorController } from '../modules/instructor/useCases/listAllInstructors';
 import { getInstructorByIdController } from '../modules/instructor/useCases/getGraduationById';
 import { deleteInstructorController } from '../modules/instructor/useCases/deleteGraduation';
+import { getInstructorByEmailController } from '../modules/instructor/useCases/getGraduationById copy';
 
 const instructorsRoutes = Router();
 
@@ -35,7 +36,7 @@ instructorsRoutes.get(
 instructorsRoutes.get(
   '/email/:email',
   (request: Request, response: Response) => {
-    getInstructorByIdController.handle(request, response);
+    getInstructorByEmailController.handle(request, response);
   }
 );
 
