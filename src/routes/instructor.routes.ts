@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
 import { ensureAuthenticated } from '../middlewares/authentication';
 import { createInstructorController } from '../modules/instructor/useCases/createInstructor';
-import { updateInstructorController } from '../modules/instructor/useCases/updateGraduation';
+import { updateInstructorController } from '../modules/instructor/useCases/updateInstructor';
 import { listInstructorController } from '../modules/instructor/useCases/listAllInstructors';
-import { getInstructorByIdController } from '../modules/instructor/useCases/getGraduationById';
-import { deleteInstructorController } from '../modules/instructor/useCases/deleteGraduation';
-import { getInstructorByEmailController } from '../modules/instructor/useCases/getGraduationById copy';
+import { getInstructorByIdController } from '../modules/instructor/useCases/getInstructorById';
+import { deleteInstructorController } from '../modules/instructor/useCases/deleteInstructor';
+import { getInstructorByEmailController } from '../modules/instructor/useCases/getInstructorByEmail';
 
 const instructorsRoutes = Router();
 
