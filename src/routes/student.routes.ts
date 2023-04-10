@@ -7,40 +7,34 @@ import { getStudentByIdController } from '../modules/student/useCases/getStudent
 import { getStudentByEmailController } from '../modules/student/useCases/getStudentByEmail';
 import { deleteStudentController } from '../modules/student/useCases/deleteStudent';
 
-const instructorsRoutes = Router();
+const studentsRoutes = Router();
 
 // instructorsRoutes.use(ensureAuthenticated);
 
-instructorsRoutes.post('/create', (request: Request, response: Response) => {
+studentsRoutes.post('/create', (request: Request, response: Response) => {
   createStudentController.handle(request, response);
 });
 
-instructorsRoutes.put('/update', (request: Request, response: Response) => {
+studentsRoutes.put('/update', (request: Request, response: Response) => {
   updateStudentController.handle(request, response);
 });
 
-instructorsRoutes.get(
-  '/all/:id_dojo',
-  (request: Request, response: Response) => {
-    listStudentController.handle(request, response);
-  }
-);
+studentsRoutes.get('/all/:id_dojo', (request: Request, response: Response) => {
+  listStudentController.handle(request, response);
+});
 
-instructorsRoutes.get(
+studentsRoutes.get(
   '/id/:id_student',
   (request: Request, response: Response) => {
     getStudentByIdController.handle(request, response);
   }
 );
 
-instructorsRoutes.get(
-  '/email/:email',
-  (request: Request, response: Response) => {
-    getStudentByEmailController.handle(request, response);
-  }
-);
+studentsRoutes.get('/email/:email', (request: Request, response: Response) => {
+  getStudentByEmailController.handle(request, response);
+});
 
-instructorsRoutes.delete('/delete/:id_student', (request, response) => {
+studentsRoutes.delete('/delete/:id_student', (request, response) => {
   deleteStudentController.handle(request, response);
 });
-export { instructorsRoutes };
+export { studentsRoutes };

@@ -12,6 +12,7 @@ import {
   graduationModel,
 } from './database/models/graduationsModel';
 import { instructorsRoutes } from './routes/instructor.routes';
+import { studentsRoutes } from './routes/student.routes';
 
 createConnectionDataBase();
 createTableDojo(dojoModel);
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use('/dojos', dojosRoutes);
 app.use('/graduations', graduationsRoutes);
 app.use('/instructors', instructorsRoutes);
+app.use('/students', studentsRoutes);
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
