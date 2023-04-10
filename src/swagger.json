@@ -25,6 +25,10 @@
     {
       "name": "Dojos",
       "description": "Dojos management"
+    },
+    {
+      "name": "Graduations",
+      "description": "Graduations management"
     }
   ],
   "paths": {
@@ -248,6 +252,32 @@
         }
       }
     },
+    "/dojos/all": {
+      "get": {
+        "tags": ["Dojos"],
+        "summary": "Get all graduations by id",
+        "description": "To get a graduation by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "graduation",
+            "required": true,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
     "/dojos/delete/{id_dojo}": {
       "delete": {
         "tags": ["Dojos"],
@@ -265,6 +295,198 @@
               "type": "object",
               "properties": {
                 "id_dojo": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations/create": {
+      "post": {
+        "tags": ["Graduations"],
+        "summary": "Create a new graduations",
+        "description": "To create a new graduations, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["graduation", "description", "id_dojo"],
+                "type": "object",
+                "properties": {
+                  "graduation": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "id_dojo": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "graduation": "Faixa Azul",
+                  "description": "1 Grau",
+                  "id_dojo": "fsdcjikj73yjnbj38989"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations/update": {
+      "put": {
+        "tags": ["Graduations"],
+        "summary": "Update a graduation",
+        "description": "To update a graduation, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "id_graduation",
+                  "graduation",
+                  "description",
+                  "id_dojo"
+                ],
+                "type": "object",
+                "properties": {
+                  "id_graduation": {
+                    "type": "string"
+                  },
+                  "graduation": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "id_dojo": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id_graduation": "csdfcsdf3348njndsf8",
+                  "graduation": "Faixa Azul",
+                  "description": "1 Grau",
+                  "id_dojo": "fsdcjikj73yjnbj38989"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations/id/{id_graduation}": {
+      "get": {
+        "tags": ["Graduations"],
+        "summary": "Get a graduation by id",
+        "description": "To get a graduation by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "graduation",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_graduation"],
+              "type": "object",
+              "properties": {
+                "id_dojo": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations/all/{id_dojo}": {
+      "get": {
+        "tags": ["Graduations"],
+        "summary": "Get all graduations by id",
+        "description": "To get a graduation by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "graduation",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_dojo"],
+              "type": "object",
+              "properties": {
+                "id_dojo": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations/delete/{id_graduation}": {
+      "delete": {
+        "tags": ["Graduations"],
+        "summary": "Delete a graduation by id",
+        "description": "To delete a graduation by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "graduations",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_graduation"],
+              "type": "object",
+              "properties": {
+                "id_graduation": {
                   "type": "string"
                 }
               }
