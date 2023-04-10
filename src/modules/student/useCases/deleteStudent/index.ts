@@ -1,13 +1,11 @@
-import { InstructorRepository } from '../../repositories/implementations/StudentRepository';
-import { DeleteInstructorController } from './DeleteStudentController';
-import { DeleteInstructorUseCase } from './DeleteStudentUseCase';
+import { StudentRepository } from '../../repositories/implementations/StudentRepository';
+import { DeleteStudentController } from './DeleteStudentController';
+import { DeleteStudentUseCase } from './DeleteStudentUseCase';
 
-const instructorRepository = InstructorRepository.getInstance();
-const deleteInstructorUseCase = new DeleteInstructorUseCase(
-  instructorRepository
-);
-const deleteInstructorController = new DeleteInstructorController(
-  deleteInstructorUseCase
+const studentRepository = StudentRepository.getInstance();
+const deleteStudentUseCase = new DeleteStudentUseCase(studentRepository);
+const deleteStudentController = new DeleteStudentController(
+  deleteStudentUseCase
 );
 
-export { deleteInstructorController };
+export { deleteStudentController };

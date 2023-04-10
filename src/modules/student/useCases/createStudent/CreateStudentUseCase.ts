@@ -1,10 +1,11 @@
 import { AppError } from '../../../erros/Error';
-import { Instructor } from '../../models/Student';
-import { IInstructorRepository } from '../../repositories/IStudentRepository';
+import { Student } from '../../models/Student';
+import { IStudentRepository } from '../../repositories/IStudentRepository';
 
 interface IRequest {
-  id_instructor: string;
-  instructor: string;
+  id_student: string;
+  student: string;
+  birthday: string;
   address_line1: string;
   address_line2: string;
   city: string;
@@ -12,18 +13,21 @@ interface IRequest {
   country: string;
   phone: string;
   email: string;
+  responsible: string;
+  responsible_phone: string;
   id_dojo: string;
   id_graduation: string;
 }
 
-class CreateInstructorUseCase {
-  constructor(private graduationRepository: IInstructorRepository) {}
+class CreateStudentUseCase {
+  constructor(private studentRepository: IStudentRepository) {}
 
   async execute({
-    id_instructor,
-    instructor,
+    id_student,
+    student,
     phone,
     email,
+    birthday,
     address_line1,
     address_line2,
     city,
@@ -31,19 +35,22 @@ class CreateInstructorUseCase {
     state,
     id_graduation,
     id_dojo,
-  }: IRequest): Promise<Instructor> {
-    const dojoAlreadyExists = await this.graduationRepository.findByEmail(
+    responsible,
+    responsible_phone,
+  }: IRequest): Promise<Student> {
+    const dojoAlreadyExists = await this.studentRepository.findByEmail(
       email ? email : ''
     );
 
     if (dojoAlreadyExists) throw new Error('Instructor already exists');
 
     try {
-      return this.graduationRepository.create({
-        id_instructor,
-        instructor,
+      return this.studentRepository.create({
+        id_student,
+        student,
         phone,
         email,
+        birthday,
         address_line1,
         address_line2,
         city,
@@ -51,6 +58,8 @@ class CreateInstructorUseCase {
         state,
         id_graduation,
         id_dojo,
+        responsible,
+        responsible_phone,
       });
     } catch (error) {
       throw new AppError(`Cannot create Instructor: ${error}`);
@@ -58,4 +67,4 @@ class CreateInstructorUseCase {
   }
 }
 
-export { CreateInstructorUseCase };
+export { CreateStudentUseCase };

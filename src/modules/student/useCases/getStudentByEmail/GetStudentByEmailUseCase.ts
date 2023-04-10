@@ -3,23 +3,23 @@ import { Student } from '../../models/Student';
 import { IStudentRepository } from '../../repositories/IStudentRepository';
 
 interface IRequest {
-  id_dojo: string;
+  email: string;
 }
 
-class ListStudentUseCase {
+class GetStudentByEmailUseCase {
   constructor(private studentRepository: IStudentRepository) {}
 
-  async execute({ id_dojo }: IRequest): Promise<Student[]> {
+  async execute({ email }: IRequest): Promise<Student> {
     try {
-      const students = await this.studentRepository.list(id_dojo);
+      const student = await this.studentRepository.findByEmail(email);
 
-      if (!students) throw new Error('Cannot get Student');
+      if (!student) throw new Error('Student not exists');
 
-      return students;
+      return student;
     } catch (error) {
       throw new AppError(`Cannot get Student: ${error}`);
     }
   }
 }
 
-export { ListStudentUseCase };
+export { GetStudentByEmailUseCase };

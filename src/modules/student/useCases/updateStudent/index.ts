@@ -1,13 +1,11 @@
-import { InstructorRepository } from '../../repositories/implementations/StudentRepository';
-import { UpdateInstructorController } from './UpdateStudentController';
-import { UpdateInstructorUseCase } from './UpdateStudentUseCase';
+import { StudentRepository } from '../../repositories/implementations/StudentRepository';
+import { UpdateStudentController } from './UpdateStudentController';
+import { UpdateStudentUseCase } from './UpdateStudentUseCase';
 
-const instructorRepository = InstructorRepository.getInstance();
-const updateInstructorUseCase = new UpdateInstructorUseCase(
-  instructorRepository
-);
-const updateInstructorController = new UpdateInstructorController(
-  updateInstructorUseCase
+const studentRepository = StudentRepository.getInstance();
+const updateStudentUseCase = new UpdateStudentUseCase(studentRepository);
+const updateStudentController = new UpdateStudentController(
+  updateStudentUseCase
 );
 
-export { updateInstructorController };
+export { updateStudentController };

@@ -1,22 +1,22 @@
 import { AppError } from '../../../erros/Error';
 import { Request, Response } from 'express';
-import { DeleteInstructorUseCase } from './DeleteStudentUseCase';
+import { DeleteStudentUseCase } from './DeleteStudentUseCase';
 import { z } from 'zod';
 
-class DeleteInstructorController {
-  constructor(private deleteInstructorUseCase: DeleteInstructorUseCase) {}
+class DeleteStudentController {
+  constructor(private deleteStudentUseCase: DeleteStudentUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const getInstructorBodySchema = z.object({ id_instructor: z.string() });
+    const getStudentBodySchema = z.object({ id_student: z.string() });
 
     try {
-      const { id_instructor } = getInstructorBodySchema.parse(request.params);
+      const { id_student } = getStudentBodySchema.parse(request.params);
 
-      const instructor = await this.deleteInstructorUseCase.execute({
-        id_instructor,
+      const student = await this.deleteStudentUseCase.execute({
+        id_student,
       });
 
-      return response.status(204).json(instructor);
+      return response.status(204).json(student);
     } catch (error: any) {
       console.error(`Erro ao delete graduation: ${error}`);
 
@@ -29,4 +29,4 @@ class DeleteInstructorController {
   }
 }
 
-export { DeleteInstructorController };
+export { DeleteStudentController };

@@ -1,17 +1,18 @@
 import { AppError } from '../../../erros/Error';
-import { UpdateInstructorUseCase } from './UpdateStudentUseCase';
+import { UpdateStudentUseCase } from './UpdateStudentUseCase';
 import { Request, Response } from 'express';
 import { z } from 'zod';
 
-class UpdateInstructorController {
-  constructor(private updateInstructorUseCase: UpdateInstructorUseCase) {}
+class UpdateStudentController {
+  constructor(private updateStudentUseCase: UpdateStudentUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const updateInstructorBodySchema = z.object({
-      id_instructor: z.string(),
-      instructor: z.string(),
+    const updateStudentBodySchema = z.object({
+      id_student: z.string(),
+      student: z.string(),
       phone: z.string(),
       email: z.string(),
+      birthday: z.string(),
       address_line1: z.string(),
       address_line2: z.string(),
       city: z.string(),
@@ -19,14 +20,17 @@ class UpdateInstructorController {
       state: z.string(),
       id_graduation: z.string(),
       id_dojo: z.string(),
+      responsible: z.string(),
+      responsible_phone: z.string(),
     });
 
     try {
       const {
-        id_instructor,
-        instructor,
+        id_student,
+        student,
         phone,
         email,
+        birthday,
         address_line1,
         address_line2,
         city,
@@ -34,13 +38,16 @@ class UpdateInstructorController {
         state,
         id_graduation,
         id_dojo,
-      } = updateInstructorBodySchema.parse(request.body);
+        responsible,
+        responsible_phone,
+      } = updateStudentBodySchema.parse(request.body);
 
-      const obj = await this.updateInstructorUseCase.execute({
-        id_instructor,
-        instructor,
+      const obj = await this.updateStudentUseCase.execute({
+        id_student,
+        student,
         phone,
         email,
+        birthday,
         address_line1,
         address_line2,
         city,
@@ -48,6 +55,8 @@ class UpdateInstructorController {
         state,
         id_graduation,
         id_dojo,
+        responsible,
+        responsible_phone,
       });
 
       return response.status(200).json(obj);
@@ -63,4 +72,4 @@ class UpdateInstructorController {
   }
 }
 
-export { UpdateInstructorController };
+export { UpdateStudentController };

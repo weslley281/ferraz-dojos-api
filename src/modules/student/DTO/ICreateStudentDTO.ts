@@ -1,6 +1,7 @@
 interface ICreateStudentDTO {
   id_student?: string;
   student: string;
+  birthday: string;
   responsible: string;
   responsible_phone: string;
   address_line1: string;

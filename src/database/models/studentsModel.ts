@@ -11,6 +11,10 @@ const studentModel = connection.define('student', {
     type: DataTypes.STRING(300),
     allowNull: false,
   },
+  birthday: {
+    type: DataTypes.DATE(),
+    allowNull: false,
+  },
   responsible: {
     type: DataTypes.STRING(100),
     allowNull: true,

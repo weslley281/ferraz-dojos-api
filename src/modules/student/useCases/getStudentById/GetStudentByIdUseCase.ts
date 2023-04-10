@@ -1,27 +1,25 @@
 import { AppError } from '../../../erros/Error';
-import { Instructor } from '../../models/Student';
-import { IInstructorRepository } from '../../repositories/IStudentRepository';
+import { Student } from '../../models/Student';
+import { IStudentRepository } from '../../repositories/IStudentRepository';
 
 interface IRequest {
-  id_instructor: string;
+  id_student: string;
 }
 
-class GetInstructorByIdUseCase {
-  constructor(private instructorRepository: IInstructorRepository) {}
+class GetStudentByIdUseCase {
+  constructor(private studentRepository: IStudentRepository) {}
 
-  async execute({ id_instructor }: IRequest): Promise<Instructor> {
+  async execute({ id_student }: IRequest): Promise<Student> {
     try {
-      const instructor = await this.instructorRepository.findById(
-        id_instructor
-      );
+      const student = await this.studentRepository.findById(id_student);
 
-      if (!instructor) throw new Error('Instructor not exists');
+      if (!student) throw new Error('Student not exists');
 
-      return instructor;
+      return student;
     } catch (error) {
-      throw new AppError(`Cannot get instructor: ${error}`);
+      throw new AppError(`Cannot get Student: ${error}`);
     }
   }
 }
 
-export { GetInstructorByIdUseCase };
+export { GetStudentByIdUseCase };

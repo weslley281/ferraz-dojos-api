@@ -1,6 +1,7 @@
 class Student {
   id_student?: string | undefined;
   student: string | undefined;
+  birthday: string | undefined;
   responsible: string | undefined;
   responsible_phone: string | undefined;
   address_line1: string | undefined;

@@ -1,13 +1,11 @@
-import { InstructorRepository } from '../../repositories/implementations/StudentRepository';
-import { GetInstructorByIdController } from './GetStudentByIdController';
-import { GetInstructorByIdUseCase } from './GetStudentByIdUseCase';
+import { StudentRepository } from '../../repositories/implementations/StudentRepository';
+import { GetStudentByIdController } from './GetStudentByIdController';
+import { GetStudentByIdUseCase } from './GetStudentByIdUseCase';
 
-const instructorRepository = InstructorRepository.getInstance();
-const getInstructorByIdUseCase = new GetInstructorByIdUseCase(
-  instructorRepository
-);
-const getInstructorByIdController = new GetInstructorByIdController(
-  getInstructorByIdUseCase
+const studentRepository = StudentRepository.getInstance();
+const getStudentByIdUseCase = new GetStudentByIdUseCase(studentRepository);
+const getStudentByIdController = new GetStudentByIdController(
+  getStudentByIdUseCase
 );
 
-export { getInstructorByIdController };
+export { getStudentByIdController };

@@ -1,10 +1,11 @@
 import { AppError } from '../../../erros/Error';
-import { Instructor } from '../../models/Student';
-import { IInstructorRepository } from '../../repositories/IStudentRepository';
+import { Student } from '../../models/Student';
+import { IStudentRepository } from '../../repositories/IStudentRepository';
 
 interface IRequest {
-  id_instructor: string;
-  instructor: string;
+  id_student: string;
+  student: string;
+  birthday: string;
   address_line1: string;
   address_line2: string;
   city: string;
@@ -12,18 +13,21 @@ interface IRequest {
   country: string;
   phone: string;
   email: string;
+  responsible: string;
+  responsible_phone: string;
   id_dojo: string;
   id_graduation: string;
 }
 
-class UpdateInstructorUseCase {
-  constructor(private dojoRepository: IInstructorRepository) {}
+class UpdateStudentUseCase {
+  constructor(private dojoRepository: IStudentRepository) {}
 
   async execute({
-    id_instructor,
-    instructor,
+    id_student,
+    student,
     phone,
     email,
+    birthday,
     address_line1,
     address_line2,
     city,
@@ -31,13 +35,16 @@ class UpdateInstructorUseCase {
     state,
     id_graduation,
     id_dojo,
-  }: IRequest): Promise<Instructor> {
+    responsible,
+    responsible_phone,
+  }: IRequest): Promise<Student> {
     try {
       return this.dojoRepository.update({
-        id_instructor,
-        instructor,
+        id_student,
+        student,
         phone,
         email,
+        birthday,
         address_line1,
         address_line2,
         city,
@@ -45,6 +52,8 @@ class UpdateInstructorUseCase {
         state,
         id_graduation,
         id_dojo,
+        responsible,
+        responsible_phone,
       });
     } catch (error) {
       throw new AppError(`Cannot update Instructor: ${error}`);
@@ -52,4 +61,4 @@ class UpdateInstructorUseCase {
   }
 }
 
-export { UpdateInstructorUseCase };
+export { UpdateStudentUseCase };

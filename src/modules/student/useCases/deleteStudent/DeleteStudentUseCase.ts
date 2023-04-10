@@ -1,23 +1,22 @@
 import { AppError } from '../../../erros/Error';
-import { Instructor } from '../../models/Student';
-import { IInstructorRepository } from '../../repositories/IStudentRepository';
+import { IStudentRepository } from '../../repositories/IStudentRepository';
 
 interface IRequest {
-  id_instructor: string;
+  id_student: string;
 }
 
-class DeleteInstructorUseCase {
-  constructor(private instructorRepository: IInstructorRepository) {}
+class DeleteStudentUseCase {
+  constructor(private studentRepository: IStudentRepository) {}
 
-  async execute({ id_instructor }: IRequest): Promise<void> {
+  async execute({ id_student }: IRequest): Promise<void> {
     try {
-      const instructor = await this.instructorRepository.delete(id_instructor);
+      const student = await this.studentRepository.delete(id_student);
 
-      return instructor;
+      return student;
     } catch (error) {
-      throw new AppError(`Cannot delete Instructor: ${error}`);
+      throw new AppError(`Cannot delete Student: ${error}`);
     }
   }
 }
 
-export { DeleteInstructorUseCase };
+export { DeleteStudentUseCase };

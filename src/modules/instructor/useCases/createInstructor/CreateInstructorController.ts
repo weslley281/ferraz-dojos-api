@@ -8,7 +8,7 @@ class CreateInstructorController {
   constructor(private createInstructorUseCase: CreateInstructorUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const createGraduationBodySchema = z.object({
+    const createInstructorBodySchema = z.object({
       id_instructor: z.string(),
       instructor: z.string(),
       phone: z.string(),
@@ -36,7 +36,7 @@ class CreateInstructorController {
         state,
         id_graduation,
         id_dojo,
-      } = createGraduationBodySchema.parse(request.body);
+      } = createInstructorBodySchema.parse(request.body);
 
       const obj = await this.createInstructorUseCase.execute({
         id_instructor,

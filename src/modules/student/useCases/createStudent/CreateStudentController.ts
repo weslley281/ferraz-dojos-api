@@ -1,18 +1,19 @@
 import { AppError } from '../../../erros/Error';
-import { CreateInstructorUseCase } from './CreateStudentUseCase';
+import { CreateStudentUseCase } from './CreateStudentUseCase';
 import { Request, Response } from 'express';
 import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
 
-class CreateInstructorController {
-  constructor(private createInstructorUseCase: CreateInstructorUseCase) {}
+class CreateStudentController {
+  constructor(private createStudentUseCase: CreateStudentUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const createGraduationBodySchema = z.object({
-      id_instructor: z.string(),
-      instructor: z.string(),
+    const createStudentBodySchema = z.object({
+      id_student: z.string(),
+      student: z.string(),
       phone: z.string(),
       email: z.string(),
+      birthday: z.string(),
       address_line1: z.string(),
       address_line2: z.string(),
       city: z.string(),
@@ -20,15 +21,18 @@ class CreateInstructorController {
       state: z.string(),
       id_graduation: z.string(),
       id_dojo: z.string(),
+      responsible: z.string(),
+      responsible_phone: z.string(),
     });
 
     const id_instructor = randomUUID();
     console.log(request.body);
     try {
       const {
-        instructor,
+        student,
         phone,
         email,
+        birthday,
         address_line1,
         address_line2,
         city,
@@ -36,13 +40,18 @@ class CreateInstructorController {
         state,
         id_graduation,
         id_dojo,
-      } = createGraduationBodySchema.parse(request.body);
+        responsible,
+        responsible_phone,
+      } = createStudentBodySchema.parse(request.body);
 
-      const obj = await this.createInstructorUseCase.execute({
-        id_instructor,
-        instructor,
+      const id_student = randomUUID();
+
+      const obj = await this.createStudentUseCase.execute({
+        id_student,
+        student,
         phone,
         email,
+        birthday,
         address_line1,
         address_line2,
         city,
@@ -50,6 +59,8 @@ class CreateInstructorController {
         state,
         id_graduation,
         id_dojo,
+        responsible,
+        responsible_phone,
       });
 
       return response.status(201).json(obj);
@@ -65,4 +76,4 @@ class CreateInstructorController {
   }
 }
 
-export { CreateInstructorController };
+export { CreateStudentController };
