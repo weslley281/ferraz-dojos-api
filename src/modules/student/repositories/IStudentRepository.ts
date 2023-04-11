@@ -17,6 +17,7 @@ interface IStudentRepository {
     state,
     id_graduation,
     id_dojo,
+    paid_out,
   }: ICreateStudentDTO): Promise<Student>;
   update({
     id_student,

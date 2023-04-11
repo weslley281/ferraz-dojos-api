@@ -1,5 +1,5 @@
 class Student {
-  id_student?: string | undefined;
+  id_student?: string;
   student: string | undefined;
   birthday: string | undefined;
   responsible: string | undefined;
@@ -13,6 +13,7 @@ class Student {
   email?: string | undefined;
   id_dojo: string | undefined;
   id_graduation: string | undefined;
+  paid_out?: boolean;
   updatedAt?: Date;
   created_at?: Date;
 }

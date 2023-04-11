@@ -61,7 +61,7 @@ class UpdateStudentController {
 
       return response.status(200).json(obj);
     } catch (error: any) {
-      console.error(`Error to update graduation: ${error}`);
+      console.error(`Error to update student: ${error}`);
 
       if (error instanceof AppError) {
         return response.status(error.statusCode).json({ error: error.message });

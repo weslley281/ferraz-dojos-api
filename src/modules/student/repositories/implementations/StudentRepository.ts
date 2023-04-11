@@ -31,6 +31,7 @@ class StudentRepository implements IStudentRepository {
     state,
     id_graduation,
     id_dojo,
+    paid_out,
   }: ICreateStudentDTO): Promise<Student> {
     const obj: any = await studentModel.create({
       id_student,
@@ -47,6 +48,7 @@ class StudentRepository implements IStudentRepository {
       state,
       id_graduation,
       id_dojo,
+      paid_out,
     });
 
     return obj.toJSON() as Student;

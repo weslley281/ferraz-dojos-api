@@ -9,7 +9,6 @@ class CreateStudentController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     const createStudentBodySchema = z.object({
-      id_student: z.string(),
       student: z.string(),
       phone: z.string(),
       email: z.string(),
@@ -25,8 +24,6 @@ class CreateStudentController {
       responsible_phone: z.string(),
     });
 
-    const id_instructor = randomUUID();
-    console.log(request.body);
     try {
       const {
         student,
@@ -45,6 +42,7 @@ class CreateStudentController {
       } = createStudentBodySchema.parse(request.body);
 
       const id_student = randomUUID();
+      const paid_out = false;
 
       const obj = await this.createStudentUseCase.execute({
         id_student,
@@ -61,11 +59,12 @@ class CreateStudentController {
         id_dojo,
         responsible,
         responsible_phone,
+        paid_out,
       });
 
       return response.status(201).json(obj);
     } catch (error: any) {
-      console.error(`Error to create instructor: ${error}`);
+      console.error(`Error to create student: ${error}`);
 
       if (error instanceof AppError) {
         return response.status(error.statusCode).json({ error: error.message });

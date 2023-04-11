@@ -17,6 +17,7 @@ interface IRequest {
   responsible_phone: string;
   id_dojo: string;
   id_graduation: string;
+  paid_out: boolean;
 }
 
 class CreateStudentUseCase {
@@ -37,6 +38,7 @@ class CreateStudentUseCase {
     id_dojo,
     responsible,
     responsible_phone,
+    paid_out,
   }: IRequest): Promise<Student> {
     const dojoAlreadyExists = await this.studentRepository.findByEmail(
       email ? email : ''
@@ -60,9 +62,10 @@ class CreateStudentUseCase {
         id_dojo,
         responsible,
         responsible_phone,
+        paid_out,
       });
     } catch (error) {
-      throw new AppError(`Cannot create Instructor: ${error}`);
+      throw new AppError(`Cannot create Sutudent: ${error}`);
     }
   }
 }

@@ -9,7 +9,6 @@ class CreateInstructorController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     const createInstructorBodySchema = z.object({
-      id_instructor: z.string(),
       instructor: z.string(),
       phone: z.string(),
       email: z.string(),
@@ -23,7 +22,9 @@ class CreateInstructorController {
     });
 
     const id_instructor = randomUUID();
-    console.log(request.body);
+
+    console.log(id_instructor);
+
     try {
       const {
         instructor,
