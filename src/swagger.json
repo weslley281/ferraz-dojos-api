@@ -329,7 +329,12 @@
           "content": {
             "application/json": {
               "schema": {
-                "required": ["graduation", "description", "id_dojo"],
+                "required": [
+                  "graduation",
+                  "description",
+                  "id_martial_art",
+                  "id_dojo"
+                ],
                 "type": "object",
                 "properties": {
                   "graduation": {
@@ -338,6 +343,7 @@
                   "description": {
                     "type": "string"
                   },
+                  "id_martial_art": { "type": "string" },
                   "id_dojo": {
                     "type": "string"
                   }
@@ -345,6 +351,7 @@
                 "example": {
                   "graduation": "Faixa Azul",
                   "description": "1 Grau",
+                  "id_martial_art": "feeifj9u8333789f8",
                   "id_dojo": "fsdcjikj73yjnbj38989"
                 }
               }
@@ -375,6 +382,7 @@
                   "id_graduation",
                   "graduation",
                   "description",
+                  "id_martial_art",
                   "id_dojo"
                 ],
                 "type": "object",
@@ -388,6 +396,7 @@
                   "description": {
                     "type": "string"
                   },
+                  "id_martial_art": { "type": "string" },
                   "id_dojo": {
                     "type": "string"
                   }
@@ -396,6 +405,7 @@
                   "id_graduation": "csdfcsdf3348njndsf8",
                   "graduation": "Faixa Azul",
                   "description": "1 Grau",
+                  "id_martial_art": "feeifj9u8333789f8",
                   "id_dojo": "fsdcjikj73yjnbj38989"
                 }
               }
