@@ -9,7 +9,6 @@ class Instructor {
   phone: string | undefined;
   email?: string | undefined;
   id_dojo: string | undefined;
-  id_graduation: string | undefined;
   updatedAt?: Date | undefined;
   created_at?: Date | undefined;
 }
