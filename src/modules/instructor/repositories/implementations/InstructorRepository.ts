@@ -26,7 +26,6 @@ class InstructorRepository implements IInstructorRepository {
     city,
     country,
     state,
-    id_graduation,
     id_dojo,
   }: ICreateInstructorDTO): Promise<Instructor> {
     const obj: any = await instructorModel.create({
@@ -39,7 +38,6 @@ class InstructorRepository implements IInstructorRepository {
       city,
       country,
       state,
-      id_graduation,
       id_dojo,
     });
 
@@ -56,7 +54,6 @@ class InstructorRepository implements IInstructorRepository {
     city,
     country,
     state,
-    id_graduation,
     id_dojo,
   }: ICreateInstructorDTO): Promise<Instructor> {
     const [rowsAffected] = await instructorModel.update(
@@ -70,7 +67,6 @@ class InstructorRepository implements IInstructorRepository {
         city,
         country,
         state,
-        id_graduation,
         id_dojo,
       },
       {

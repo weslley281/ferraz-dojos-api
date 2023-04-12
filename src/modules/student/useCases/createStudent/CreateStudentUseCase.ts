@@ -16,7 +16,6 @@ interface IRequest {
   responsible: string;
   responsible_phone: string;
   id_dojo: string;
-  id_graduation: string;
   paid_out: boolean;
 }
 
@@ -34,7 +33,6 @@ class CreateStudentUseCase {
     city,
     country,
     state,
-    id_graduation,
     id_dojo,
     responsible,
     responsible_phone,
@@ -58,7 +56,6 @@ class CreateStudentUseCase {
         city,
         country,
         state,
-        id_graduation,
         id_dojo,
         responsible,
         responsible_phone,

@@ -17,7 +17,6 @@ class UpdateInstructorController {
       city: z.string(),
       country: z.string(),
       state: z.string(),
-      id_graduation: z.string(),
       id_dojo: z.string(),
     });
 
@@ -32,7 +31,6 @@ class UpdateInstructorController {
         city,
         country,
         state,
-        id_graduation,
         id_dojo,
       } = updateInstructorBodySchema.parse(request.body);
 
@@ -46,7 +44,6 @@ class UpdateInstructorController {
         city,
         country,
         state,
-        id_graduation,
         id_dojo,
       });
 

@@ -15,7 +15,6 @@ interface IStudentRepository {
     city,
     country,
     state,
-    id_graduation,
     id_dojo,
     paid_out,
   }: ICreateStudentDTO): Promise<Student>;
@@ -32,7 +31,6 @@ interface IStudentRepository {
     city,
     country,
     state,
-    id_graduation,
     id_dojo,
   }: ICreateStudentDTO): Promise<Student>;
   findById(id_student: string): Promise<Student>;

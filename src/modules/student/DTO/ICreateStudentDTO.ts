@@ -12,7 +12,6 @@ interface ICreateStudentDTO {
   phone: string;
   email?: string;
   id_dojo: string;
-  id_graduation: string;
   paid_out?: boolean;
   updatedAt?: Date;
   created_at?: Date;

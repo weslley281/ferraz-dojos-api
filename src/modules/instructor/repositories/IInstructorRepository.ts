@@ -12,7 +12,6 @@ interface IInstructorRepository {
     city,
     country,
     state,
-    id_graduation,
     id_dojo,
   }: ICreateInstructorDTO): Promise<Instructor>;
   update({
@@ -25,12 +24,11 @@ interface IInstructorRepository {
     city,
     country,
     state,
-    id_graduation,
     id_dojo,
   }: ICreateInstructorDTO): Promise<Instructor>;
-  findById(id_graduation: string): Promise<Instructor>;
+  findById(id_instructor: string): Promise<Instructor>;
   findByEmail(email: string): Promise<Instructor>;
-  delete(id_graduation: string): Promise<void>;
+  delete(id_instructor: string): Promise<void>;
   list(id_dojo: string): Promise<Instructor[]>;
 }
 

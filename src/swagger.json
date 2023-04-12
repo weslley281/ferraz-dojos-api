@@ -523,7 +523,6 @@
               "schema": {
                 "required": [
                   "instructor",
-                  "id_graduation",
                   "address_line1",
                   "address_line2",
                   "city",
@@ -536,9 +535,6 @@
                 "type": "object",
                 "properties": {
                   "instructor": {
-                    "type": "string"
-                  },
-                  "id_graduation": {
                     "type": "string"
                   },
                   "address_line1": {
@@ -568,7 +564,6 @@
                 },
                 "example": {
                   "instructor": "Fulano de Tal",
-                  "id_graduation": "sdmdm83bnjn38ds3",
                   "address_line1": "Rua Fulano de tal, 123",
                   "address_line2": "Quadra 12, Area 12",
                   "city": "Cuiabá",
@@ -605,7 +600,6 @@
                 "required": [
                   "id_instructor",
                   "instructor",
-                  "id_graduation",
                   "address_line1",
                   "address_line2",
                   "city",
@@ -621,9 +615,6 @@
                     "type": "string"
                   },
                   "instructor": {
-                    "type": "string"
-                  },
-                  "id_graduation": {
                     "type": "string"
                   },
                   "address_line1": {
@@ -654,7 +645,6 @@
                 "example": {
                   "id_instructor": "80b532dd-30db-4be8-a6f9-7e014f730043",
                   "instructor": "Fulano de Tal",
-                  "id_graduation": "sdmdm83bnjn38ds3",
                   "address_line1": "Rua Fulano de tal, 123",
                   "address_line2": "Quadra 12, Area 12",
                   "city": "Cuiabá",
@@ -821,7 +811,6 @@
               "schema": {
                 "required": [
                   "student",
-                  "id_graduation",
                   "address_line1",
                   "address_line2",
                   "city",
@@ -837,9 +826,6 @@
                 "type": "object",
                 "properties": {
                   "instructor": {
-                    "type": "string"
-                  },
-                  "id_graduation": {
                     "type": "string"
                   },
                   "address_line1": {
@@ -886,7 +872,6 @@
                   "country": "Brasil",
                   "phone": "(65) 999157130",
                   "email": "fulano@gmail.com",
-                  "id_graduation": "iojfiefji34983mdkvmkld",
                   "id_dojo": "kdmfkmed090m320m",
                   "birthday": "28-11-1995",
                   "responsible": "Cicrano de Tal",
@@ -919,7 +904,6 @@
                 "required": [
                   "id_student",
                   "student",
-                  "id_graduation",
                   "address_line1",
                   "address_line2",
                   "city",
@@ -938,9 +922,6 @@
                     "type": "string"
                   },
                   "student": {
-                    "type": "string"
-                  },
-                  "id_graduation": {
                     "type": "string"
                   },
                   "address_line1": {
@@ -980,7 +961,6 @@
                 "example": {
                   "id_student": "80b532dd-30db-4be8-a6f9-7e014f730043",
                   "student": "Fulano de Tal",
-                  "id_graduation": "sdmdm83bnjn38ds3",
                   "address_line1": "Rua Fulano de tal, 123",
                   "address_line2": "Quadra 12, Area 12",
                   "city": "Cuiabá",

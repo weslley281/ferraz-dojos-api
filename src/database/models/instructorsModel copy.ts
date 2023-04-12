@@ -39,10 +39,6 @@ const instructorModel = connection.define('instructor', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
-  id_graduation: {
-    type: DataTypes.STRING(300),
-    allowNull: false,
-  },
   id_dojo: {
     type: DataTypes.STRING(300),
     allowNull: false,

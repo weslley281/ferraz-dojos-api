@@ -55,10 +55,6 @@ const studentModel = connection.define('student', {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
-  id_graduation: {
-    type: DataTypes.STRING(300),
-    allowNull: false,
-  },
   id_dojo: {
     type: DataTypes.STRING(300),
     allowNull: false,

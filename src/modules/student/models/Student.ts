@@ -12,7 +12,6 @@ class Student {
   phone: string | undefined;
   email?: string | undefined;
   id_dojo: string | undefined;
-  id_graduation: string | undefined;
   paid_out?: boolean;
   updatedAt?: Date;
   created_at?: Date;

@@ -13,7 +13,6 @@ interface IRequest {
   phone: string;
   email: string;
   id_dojo: string;
-  id_graduation: string;
 }
 
 class CreateInstructorUseCase {
@@ -29,7 +28,6 @@ class CreateInstructorUseCase {
     city,
     country,
     state,
-    id_graduation,
     id_dojo,
   }: IRequest): Promise<Instructor> {
     const dojoAlreadyExists = await this.graduationRepository.findByEmail(
@@ -49,7 +47,6 @@ class CreateInstructorUseCase {
         city,
         country,
         state,
-        id_graduation,
         id_dojo,
       });
     } catch (error) {

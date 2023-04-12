@@ -17,7 +17,6 @@ class CreateInstructorController {
       city: z.string(),
       country: z.string(),
       state: z.string(),
-      id_graduation: z.string(),
       id_dojo: z.string(),
     });
 
@@ -35,7 +34,6 @@ class CreateInstructorController {
         city,
         country,
         state,
-        id_graduation,
         id_dojo,
       } = createInstructorBodySchema.parse(request.body);
 
@@ -49,7 +47,6 @@ class CreateInstructorController {
         city,
         country,
         state,
-        id_graduation,
         id_dojo,
       });
 
