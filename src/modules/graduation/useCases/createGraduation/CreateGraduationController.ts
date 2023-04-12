@@ -11,13 +11,14 @@ class CreateGraduationController {
     const createGraduationBodySchema = z.object({
       graduation: z.string(),
       description: z.string(),
+      id_martial_art: z.string(),
       id_dojo: z.string(),
     });
 
     const id_graduation = randomUUID();
     console.log(request.body);
     try {
-      const { graduation, description, id_dojo } =
+      const { graduation, description, id_martial_art, id_dojo } =
         createGraduationBodySchema.parse(request.body);
 
       const paid_out = false;
@@ -26,6 +27,7 @@ class CreateGraduationController {
         id_graduation,
         graduation,
         description,
+        id_martial_art,
         id_dojo,
       });
 

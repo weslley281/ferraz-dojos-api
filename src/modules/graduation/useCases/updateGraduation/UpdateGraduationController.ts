@@ -11,17 +11,24 @@ class UpdateGraduationController {
       id_graduation: z.string(),
       graduation: z.string(),
       description: z.string(),
+      id_martial_art: z.string(),
       id_dojo: z.string(),
     });
 
     try {
-      const { id_graduation, graduation, description, id_dojo } =
-        updateGraduationBodySchema.parse(request.body);
+      const {
+        id_graduation,
+        graduation,
+        description,
+        id_martial_art,
+        id_dojo,
+      } = updateGraduationBodySchema.parse(request.body);
 
       const obj = await this.updateGraduationUseCase.execute({
         id_graduation,
         graduation,
         description,
+        id_martial_art,
         id_dojo,
       });
 

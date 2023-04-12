@@ -7,6 +7,7 @@ interface IRequest {
   graduation?: string;
   description: string;
   id_dojo: string;
+  id_martial_art: string;
 }
 
 class CreateGraduationUseCase {
@@ -16,6 +17,7 @@ class CreateGraduationUseCase {
     id_graduation,
     graduation,
     description,
+    id_martial_art,
     id_dojo,
   }: IRequest): Promise<Graduation> {
     const dojoAlreadyExists = await this.graduationRepository.findByName(
@@ -29,6 +31,7 @@ class CreateGraduationUseCase {
         id_graduation,
         graduation,
         description,
+        id_martial_art,
         id_dojo,
       });
     } catch (error) {

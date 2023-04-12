@@ -6,12 +6,14 @@ interface IGraduationRepository {
     id_graduation,
     graduation,
     description,
+    id_martial_art,
     id_dojo,
   }: ICreateGraduationDTO): Promise<Graduation>;
   update({
     id_graduation,
     graduation,
     description,
+    id_martial_art,
     id_dojo,
   }: ICreateGraduationDTO): Promise<Graduation>;
   findById(id_graduation: string): Promise<Graduation>;

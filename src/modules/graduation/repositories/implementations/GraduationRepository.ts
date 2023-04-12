@@ -20,12 +20,14 @@ class GraduationRepository implements IGraduationRepository {
     id_graduation,
     graduation,
     description,
+    id_martial_art,
     id_dojo,
   }: ICreateGraduationDTO): Promise<Graduation> {
     const obj: any = await graduationModel.create({
       id_graduation,
       graduation,
       description,
+      id_martial_art,
       id_dojo,
     });
 
@@ -36,6 +38,7 @@ class GraduationRepository implements IGraduationRepository {
     id_graduation,
     graduation,
     description,
+    id_martial_art,
     id_dojo,
   }: ICreateGraduationDTO): Promise<Graduation> {
     const [rowsAffected] = await graduationModel.update(
@@ -43,6 +46,7 @@ class GraduationRepository implements IGraduationRepository {
         id_graduation,
         graduation,
         description,
+        id_martial_art,
         id_dojo,
       },
       {
@@ -51,7 +55,7 @@ class GraduationRepository implements IGraduationRepository {
     );
 
     if (rowsAffected === 0) {
-      throw new AppError('Dojo not found.', 404);
+      throw new AppError('Graduation not found.', 404);
     }
 
     const updatedGraduation = await graduationModel.findOne({

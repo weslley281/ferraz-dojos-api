@@ -15,6 +15,10 @@ const graduationModel = connection.define('graduation', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
+  id_martial_art: {
+    type: DataTypes.STRING(300),
+    allowNull: false,
+  },
   id_dojo: {
     type: DataTypes.STRING(300),
     allowNull: false,

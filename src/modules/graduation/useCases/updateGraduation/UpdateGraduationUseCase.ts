@@ -8,6 +8,7 @@ interface IRequest {
   graduation?: string;
   description: string;
   id_dojo: string;
+  id_martial_art: string;
 }
 
 class UpdateGraduationUseCase {
@@ -17,6 +18,7 @@ class UpdateGraduationUseCase {
     id_graduation,
     graduation,
     description,
+    id_martial_art,
     id_dojo,
   }: IRequest): Promise<Graduation> {
     try {
@@ -24,6 +26,7 @@ class UpdateGraduationUseCase {
         id_graduation,
         graduation,
         description,
+        id_martial_art,
         id_dojo,
       });
     } catch (error) {
