@@ -2,6 +2,8 @@ import { AppError } from '../../../erros/Error';
 import { Request, Response } from 'express';
 import { GetDojoByIdUseCase } from './GetDojoByIdUseCase';
 import { z } from 'zod';
+import { verify } from 'jsonwebtoken';
+import { env } from '../../../../env';
 
 class GetDojoByIdController {
   constructor(private getDojoByIdUseCase: GetDojoByIdUseCase) {}
