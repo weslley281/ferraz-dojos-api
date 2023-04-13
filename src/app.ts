@@ -27,6 +27,11 @@ import {
   createTableInstructor,
   instructorModel,
 } from './database/models/instructorsModel';
+import {
+  createTableGraduation_student,
+  graduation_studentModel,
+} from './database/models/graduations_studentsModel';
+import { graduations_studentRoutes } from './routes/graduation_student.routes';
 
 createConnectionDataBase();
 createTableDojo(dojoModel);
@@ -34,6 +39,7 @@ createTableGraduation(graduationModel);
 createTableInstructor(instructorModel);
 createTableStudent(studentModel);
 createTableGraduation_instructor(graduation_instructorModel);
+createTableGraduation_student(graduation_studentModel);
 
 const app = express();
 
@@ -44,6 +50,7 @@ app.use('/graduations', graduationsRoutes);
 app.use('/instructors', instructorsRoutes);
 app.use('/students', studentsRoutes);
 app.use('/graduations_instructor', graduations_instructorRoutes);
+app.use('/graduations_student', graduations_studentRoutes);
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 

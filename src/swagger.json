@@ -41,6 +41,10 @@
     {
       "name": "GraduationsInstructor",
       "description": "Graduations Instructor management"
+    },
+    {
+      "name": "GraduationsStudent",
+      "description": "Student Instructor management"
     }
   ],
   "paths": {
@@ -1309,6 +1313,199 @@
               "type": "object",
               "properties": {
                 "id_graduation_instructor": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations_student/create": {
+      "post": {
+        "tags": ["GraduationsStudent"],
+        "summary": "Create a new graduations",
+        "description": "To create a new graduations, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["id_student", "id_graduation", "id_dojo"],
+                "type": "object",
+                "properties": {
+                  "id_student": {
+                    "type": "string"
+                  },
+                  "id_graduation": {
+                    "type": "string"
+                  },
+                  "id_dojo": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "graduation": "Faixa Azul",
+                  "id_student": "Fsdvfkldsfkdm9u3r4b4g7",
+                  "id_graduation": "feeifj9u8333789f8",
+                  "id_dojo": "fsdcjikj73yjnbj38989"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations_student/update": {
+      "put": {
+        "tags": ["GraduationsStudent"],
+        "summary": "Update a graduation",
+        "description": "To update a graduation, add this fields in the request body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "id_graduation_student",
+                  "id_student",
+                  "id_graduation",
+                  "id_dojo"
+                ],
+                "type": "object",
+                "properties": {
+                  "id_graduation_student": {
+                    "type": "string"
+                  },
+                  "id_student": {
+                    "type": "string"
+                  },
+                  "id_graduation": {
+                    "type": "string"
+                  },
+                  "id_dojo": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id_graduation_student": "csdfcsdf3348njndsf8",
+                  "id_student": "Fsdvfkldsfkdm9u3r4b4g7",
+                  "id_graduation": "feeifj9u8333789f8",
+                  "id_dojo": "fsdcjikj73yjnbj38989"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations_student/id/{id_graduation_student}": {
+      "get": {
+        "tags": ["GraduationsStudent"],
+        "summary": "Get a graduation by id",
+        "description": "To get a graduation by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "graduation",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_graduation_student"],
+              "type": "object",
+              "properties": {
+                "id_graduation_student": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations_student/all/{id_student}": {
+      "get": {
+        "tags": ["GraduationsStudent"],
+        "summary": "Get all graduations by id",
+        "description": "To get a graduation by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "graduation",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_student"],
+              "type": "object",
+              "properties": {
+                "id_student": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/graduations_student/delete/{id_graduation_student}": {
+      "delete": {
+        "tags": ["GraduationsStudent"],
+        "summary": "Delete a graduation by id",
+        "description": "To delete a graduation by id, add this fields in the request body.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "graduations",
+            "required": true,
+            "allowEmptyValue": false,
+            "example": "d4df3b65-0780-44db-9538-8e9f362d8893",
+            "schema": {
+              "required": ["id_graduation_student"],
+              "type": "object",
+              "properties": {
+                "id_graduation_student": {
                   "type": "string"
                 }
               }

@@ -1,0 +1,34 @@
+import { AppError } from '../../../erros/Error';
+import { Graduation_student } from '../../models/Graduation_student';
+import { IGraduation_studentRepository } from '../../repositories/IGraduation_studentRepository';
+
+interface IRequest {
+  id_graduation_student: string;
+  id_student: string;
+  id_graduation: string;
+  id_dojo: string;
+}
+
+class CreateGraduation_studentUseCase {
+  constructor(private graduationRepository: IGraduation_studentRepository) {}
+
+  async execute({
+    id_graduation_student,
+    id_student,
+    id_graduation,
+    id_dojo,
+  }: IRequest): Promise<Graduation_student> {
+    try {
+      return this.graduationRepository.create({
+        id_graduation_student,
+        id_student,
+        id_graduation,
+        id_dojo,
+      });
+    } catch (error) {
+      throw new AppError(`Cannot create Graduation: ${error}`);
+    }
+  }
+}
+
+export { CreateGraduation_studentUseCase };
