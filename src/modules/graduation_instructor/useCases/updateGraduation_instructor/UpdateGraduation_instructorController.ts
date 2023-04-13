@@ -1,10 +1,12 @@
 import { AppError } from '../../../erros/Error';
-import { UpdateGraduationUseCase } from './UpdateGraduation_instructorUseCase';
+import { UpdateGraduation_instructorUseCase } from './UpdateGraduation_instructorUseCase';
 import { Request, Response } from 'express';
 import { z } from 'zod';
 
-class UpdateGraduationController {
-  constructor(private updateGraduationUseCase: UpdateGraduationUseCase) {}
+class UpdateGraduation_instructorController {
+  constructor(
+    private updateGraduation_instructorUseCase: UpdateGraduation_instructorUseCase
+  ) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
     const updateGraduationBodySchema = z.object({
@@ -22,7 +24,7 @@ class UpdateGraduationController {
         id_dojo,
       } = updateGraduationBodySchema.parse(request.body);
 
-      const obj = await this.updateGraduationUseCase.execute({
+      const obj = await this.updateGraduation_instructorUseCase.execute({
         id_graduation_instructor,
         id_instructor,
         id_graduation,
@@ -42,4 +44,4 @@ class UpdateGraduationController {
   }
 }
 
-export { UpdateGraduationController };
+export { UpdateGraduation_instructorController };

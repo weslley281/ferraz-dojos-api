@@ -1,6 +1,6 @@
 import { AppError } from '../../../erros/Error';
-import { Graduation } from '../../models/Graduation_instructor';
-import { IGraduationRepository } from '../../repositories/IGraduation_instructorRepository';
+import { Graduation_instructor } from '../../models/Graduation_instructor';
+import { IGraduation_instructorRepository } from '../../repositories/IGraduation_instructorRepository';
 import { hash } from 'bcrypt';
 
 interface IRequest {
@@ -10,15 +10,15 @@ interface IRequest {
   id_dojo: string;
 }
 
-class UpdateGraduationUseCase {
-  constructor(private dojoRepository: IGraduationRepository) {}
+class UpdateGraduation_instructorUseCase {
+  constructor(private dojoRepository: IGraduation_instructorRepository) {}
 
   async execute({
     id_graduation_instructor,
     id_instructor,
     id_graduation,
     id_dojo,
-  }: IRequest): Promise<Graduation> {
+  }: IRequest): Promise<Graduation_instructor> {
     try {
       return this.dojoRepository.update({
         id_graduation_instructor,
@@ -32,4 +32,4 @@ class UpdateGraduationUseCase {
   }
 }
 
-export { UpdateGraduationUseCase };
+export { UpdateGraduation_instructorUseCase };

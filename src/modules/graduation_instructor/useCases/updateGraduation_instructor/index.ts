@@ -1,13 +1,11 @@
-import { GraduationRepository } from '../../repositories/implementations/Graduation_instructorRepository';
-import { UpdateGraduationController } from './UpdateGraduation_instructorController';
-import { UpdateGraduationUseCase } from './UpdateGraduation_instructorUseCase';
+import { Graduation_instructorRepository } from '../../repositories/implementations/Graduation_instructorRepository';
+import { UpdateGraduation_instructorController } from './UpdateGraduation_instructorController';
+import { UpdateGraduation_instructorUseCase } from './UpdateGraduation_instructorUseCase';
 
-const graduationRepository = GraduationRepository.getInstance();
-const updateGraduationUseCase = new UpdateGraduationUseCase(
-  graduationRepository
-);
-const updateGraduationController = new UpdateGraduationController(
-  updateGraduationUseCase
-);
+const graduationRepository = Graduation_instructorRepository.getInstance();
+const updateGraduation_instructorUseCase =
+  new UpdateGraduation_instructorUseCase(graduationRepository);
+const updateGraduation_instructorController =
+  new UpdateGraduation_instructorController(updateGraduation_instructorUseCase);
 
-export { updateGraduationController };
+export { updateGraduation_instructorController };

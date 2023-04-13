@@ -16,7 +16,7 @@ interface IGraduation_instructorRepository {
   }: ICreateGraduation_instructorDTO): Promise<Graduation_instructor>;
   findById(id_graduation: string): Promise<Graduation_instructor>;
   delete(id_graduation: string): Promise<void>;
-  list(id_dojo: string): Promise<Graduation_instructor[]>;
+  list(id_instructor: string): Promise<Graduation_instructor[]>;
 }
 
 export { IGraduation_instructorRepository };

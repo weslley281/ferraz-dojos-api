@@ -1,18 +1,26 @@
 import { z } from 'zod';
 import { AppError } from '../../../erros/Error';
-import { ListGraduationUseCase } from './ListGraduation_instructorUseCase';
+import { ListGraduation_instructorUseCase } from './ListGraduation_instructorUseCase';
 import { Request, Response } from 'express';
 
-class ListGraduationController {
-  constructor(private listGraduationUseCase: ListGraduationUseCase) {}
+class ListGraduation_instructorController {
+  constructor(
+    private listGraduation_instructorUseCase: ListGraduation_instructorUseCase
+  ) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const getGraduationBodySchema = z.object({ id_dojo: z.string() });
+    const getGraduation_instructorBodySchema = z.object({
+      id_instructor: z.string(),
+    });
 
     try {
-      const { id_dojo } = getGraduationBodySchema.parse(request.params);
+      const { id_instructor } = getGraduation_instructorBodySchema.parse(
+        request.params
+      );
 
-      const graduations = await this.listGraduationUseCase.execute({ id_dojo });
+      const graduations = await this.listGraduation_instructorUseCase.execute({
+        id_instructor,
+      });
 
       return response.status(200).json(graduations);
     } catch (error: any) {
@@ -27,4 +35,4 @@ class ListGraduationController {
   }
 }
 
-export { ListGraduationController };
+export { ListGraduation_instructorController };

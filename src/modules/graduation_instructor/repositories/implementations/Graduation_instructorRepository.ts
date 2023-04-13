@@ -74,9 +74,9 @@ class Graduation_instructorRepository
     return obj;
   }
 
-  async list(id_dojo: string): Promise<Graduation_instructor[]> {
+  async list(id_instructor: string): Promise<Graduation_instructor[]> {
     const graduations: any = await graduation_instructorModel.findAll({
-      where: { id_dojo },
+      where: { id_instructor },
     });
     return graduations;
   }

@@ -1,17 +1,21 @@
 import { AppError } from '../../../erros/Error';
-import { Graduation } from '../../models/Graduation_instructor';
-import { IGraduationRepository } from '../../repositories/IGraduation_instructorRepository';
+import { Graduation_instructor } from '../../models/Graduation_instructor';
+import { IGraduation_instructorRepository } from '../../repositories/IGraduation_instructorRepository';
 
 interface IRequest {
-  id_dojo: string;
+  id_instructor: string;
 }
 
-class ListGraduationUseCase {
-  constructor(private graduationRepository: IGraduationRepository) {}
+class ListGraduation_instructorUseCase {
+  constructor(
+    private graduation_instructorRepository: IGraduation_instructorRepository
+  ) {}
 
-  async execute({ id_dojo }: IRequest): Promise<Graduation[]> {
+  async execute({ id_instructor }: IRequest): Promise<Graduation_instructor[]> {
     try {
-      const graduations = await this.graduationRepository.list(id_dojo);
+      const graduations = await this.graduation_instructorRepository.list(
+        id_instructor
+      );
 
       if (!graduations) throw new Error('Cannot get Graduation');
 
@@ -22,4 +26,4 @@ class ListGraduationUseCase {
   }
 }
 
-export { ListGraduationUseCase };
+export { ListGraduation_instructorUseCase };
