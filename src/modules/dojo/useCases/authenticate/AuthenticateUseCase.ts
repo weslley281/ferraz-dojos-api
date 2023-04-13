@@ -9,19 +9,10 @@ interface IRequest {
   password: string;
 }
 
-interface IResponse {
-  dojo: {
-    id_dojo: string;
-    dojo: string;
-    email: string;
-  };
-  token: string;
-}
-
 class AuthenticateUseCase {
   constructor(private dojoRepository: IDojoRepository) {}
 
-  async execute({ email, password }: IRequest): Promise<IResponse> {
+  async execute({ email, password }: IRequest): Promise<string> {
     try {
       const dojo = await this.dojoRepository.findByEmail(email);
 
@@ -47,16 +38,16 @@ class AuthenticateUseCase {
         expiresIn: '7d',
       });
 
-      const tokenReturn: IResponse = {
-        token,
-        dojo: {
-          id_dojo: dojo.id_dojo,
-          dojo: dojo.dojo,
-          email: dojo.email,
-        },
-      };
+      // const tokenReturn: IResponse = {
+      //   token,
+      //   dojo: {
+      //     id_dojo: dojo.id_dojo,
+      //     dojo: dojo.dojo,
+      //     email: dojo.email,
+      //   },
+      // };
 
-      return tokenReturn;
+      return token;
     } catch (error) {
       throw new AppError(`Não foi possível autenticar o Dojo: ${error}`);
     }
