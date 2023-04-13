@@ -1,4 +1,4 @@
-import { instructorModel } from '../../../../database/models/instructorsModel copy';
+import { instructorModel } from '../../../../database/models/instructorsModel';
 import { AppError } from '../../../erros/Error';
 import { ICreateInstructorDTO } from '../../DTO/ICreateInstructorDTO';
 import { Instructor } from '../../models/Instructor';
