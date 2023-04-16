@@ -5,6 +5,7 @@ import { updateMartialArtController } from '../modules/martia_arts/useCases/upda
 import { listMartialArtController } from '../modules/martia_arts/useCases/listaAllMartialArts';
 import { getMartialArtByIdController } from '../modules/martia_arts/useCases/getMartialArtById';
 import { deleteMartialArtController } from '../modules/martia_arts/useCases/deleteMartialArt';
+import { getMartialArtByNameController } from '../modules/martia_arts/useCases/getMartialArtByName';
 
 const martialArtsRoutes = Router();
 
@@ -22,6 +23,13 @@ martialArtsRoutes.get(
   '/all/:id_dojo',
   (request: Request, response: Response) => {
     listMartialArtController.handle(request, response);
+  }
+);
+
+martialArtsRoutes.get(
+  '/name/:martial_art',
+  (request: Request, response: Response) => {
+    getMartialArtByNameController.handle(request, response);
   }
 );
 
