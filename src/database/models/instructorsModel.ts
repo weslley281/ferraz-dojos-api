@@ -45,7 +45,7 @@ const instructorModel = connection.define('instructor', {
   },
 });
 
-function createTableInstructor(instructor: any) {
+function createTableInstructor() {
   return instructorModel.sync({ force: false }).then(() => {
     console.log('*******Instructor table successfully created*******');
   });

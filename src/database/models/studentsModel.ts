@@ -61,7 +61,7 @@ const studentModel = connection.define('student', {
   },
 });
 
-function createTableStudent(student: any) {
+function createTableStudent() {
   return studentModel.sync({ force: false }).then(() => {
     console.log('*******Student table successfully created*******');
   });

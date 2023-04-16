@@ -49,7 +49,7 @@ const dojoModel = connection.define('dojo', {
   },
 });
 
-function createTableDojo(dojo: any) {
+function createTableDojo() {
   return dojoModel.sync({ force: false }).then(() => {
     console.log('*******Dojo table successfully created*******');
   });

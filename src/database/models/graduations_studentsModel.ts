@@ -21,9 +21,9 @@ const graduation_studentModel = connection.define('graduations_student', {
   },
 });
 
-function createTableGraduation_student(graduation_student: any) {
+function createTableGraduation_student() {
   return graduation_studentModel.sync({ force: false }).then(() => {
-    console.log('*******Graduation_student table successfully created*******');
+    console.log('*******Graduation Student table successfully created*******');
   });
 }
 

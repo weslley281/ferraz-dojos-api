@@ -21,10 +21,10 @@ const graduation_instructorModel = connection.define('graduations_instructor', {
   },
 });
 
-function createTableGraduation_instructor(graduation_instructor: any) {
+function createTableGraduation_instructor() {
   return graduation_instructorModel.sync({ force: false }).then(() => {
     console.log(
-      '*******Graduation_instructor table successfully created*******'
+      '*******Graduation Instructor table successfully created*******'
     );
   });
 }
