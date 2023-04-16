@@ -21,12 +21,15 @@ class MartialArtRepository implements IMartialArtRepository {
     id_martial_art,
     martial_art,
     description,
+    id_dojo,
   }: ICreateMartialArtDTO): Promise<MartialArt> {
     const obj: any = await martial_artModel.create({
       id_martial_art,
       martial_art,
       description,
+      id_dojo,
     });
+    console.log(`repository: ${obj}`);
 
     return obj.toJSON() as MartialArt;
   }
@@ -35,12 +38,14 @@ class MartialArtRepository implements IMartialArtRepository {
     id_martial_art,
     martial_art,
     description,
+    id_dojo,
   }: ICreateMartialArtDTO): Promise<MartialArt> {
     const [rowsAffected] = await martial_artModel.update(
       {
         id_martial_art,
         martial_art,
         description,
+        id_dojo,
       },
       {
         where: { id_martial_art },

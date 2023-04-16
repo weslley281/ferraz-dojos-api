@@ -15,12 +15,10 @@ class CreateMartialArtController {
     });
 
     const id_martial_art = randomUUID();
-    console.log(request.body);
+
     try {
       const { martial_art, description, id_dojo } =
         createMartialArtBodySchema.parse(request.body);
-
-      const paid_out = false;
 
       const obj = await this.createMartialArtUseCase.execute({
         id_martial_art,
@@ -31,6 +29,7 @@ class CreateMartialArtController {
 
       return response.status(201).json(obj);
     } catch (error: any) {
+      console.log(`request: ${request.body}`);
       console.error(`Erro ao cadastrar Martial Art: ${error}`);
 
       if (error instanceof AppError) {

@@ -9,7 +9,7 @@ import { getMartialArtByNameController } from '../modules/martia_arts/useCases/g
 
 const martialArtsRoutes = Router();
 
-martialArtsRoutes.use(ensureAuthenticated);
+//martialArtsRoutes.use(ensureAuthenticated);
 
 martialArtsRoutes.post('/create', (request: Request, response: Response) => {
   createMartialArtController.handle(request, response);
