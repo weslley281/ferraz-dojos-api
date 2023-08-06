@@ -2,7 +2,7 @@
 
 ## Visão geral
 
-Este aplicativo tem como objetivo fornecer uma plataforma para academias de artes marciais gerenciarem suas atividades, bem como permitir que os alunos acessem informações relevantes sobre a academia e façam reservas para as aulas.
+O WarriorHub é um aplicativo desenvolvido para proporcionar uma plataforma completa de gerenciamento de academias de artes marciais, permitindo que os alunos acessem informações relevantes e façam reservas para as aulas.
 
 ## Casos de Uso
 
