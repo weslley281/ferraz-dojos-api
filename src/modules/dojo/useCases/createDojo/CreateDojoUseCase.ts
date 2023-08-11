@@ -1,4 +1,4 @@
-import { AppError } from '../../../erros/Error';
+import { AppError } from '@shared/erros/AppError';
 import { Dojo } from '../../models/Dojo';
 import { IDojoRepository } from '../../repositories/IDojoRepository';
 import { hash } from 'bcrypt';
