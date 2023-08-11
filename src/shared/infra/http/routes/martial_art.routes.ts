@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
 import { ensureAuthenticated } from '../middlewares/authentication';
-import { createMartialArtController } from '../modules/martia_arts/useCases/createMartialArt';
-import { updateMartialArtController } from '../modules/martia_arts/useCases/updateMartialArt';
-import { listMartialArtController } from '../modules/martia_arts/useCases/listaAllMartialArts';
-import { getMartialArtByIdController } from '../modules/martia_arts/useCases/getMartialArtById';
-import { deleteMartialArtController } from '../modules/martia_arts/useCases/deleteMartialArt';
-import { getMartialArtByNameController } from '../modules/martia_arts/useCases/getMartialArtByName';
+import { createMartialArtController } from '../../../../modules/martia_arts/useCases/createMartialArt';
+import { updateMartialArtController } from '../../../../modules/martia_arts/useCases/updateMartialArt';
+import { listMartialArtController } from '../../../../modules/martia_arts/useCases/listaAllMartialArts';
+import { getMartialArtByIdController } from '../../../../modules/martia_arts/useCases/getMartialArtById';
+import { deleteMartialArtController } from '../../../../modules/martia_arts/useCases/deleteMartialArt';
+import { getMartialArtByNameController } from '../../../../modules/martia_arts/useCases/getMartialArtByName';
 
 const martialArtsRoutes = Router();
 

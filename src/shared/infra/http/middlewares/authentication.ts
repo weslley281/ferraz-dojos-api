@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { AppError } from '../modules/erros/Error';
-import { DojoRepository } from '../modules/dojo/repositories/implementations/DojoRepository';
-import { env } from '../env';
+import { AppError } from '../../../../modules/erros/Error';
+import { DojoRepository } from '../../../../modules/dojo/repositories/implementations/DojoRepository';
+import { env } from '../../../../env';
 
 interface TokenPayload {
   sub: string;

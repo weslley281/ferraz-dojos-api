@@ -1,7 +1,7 @@
-import { AppError } from '../../../erros/Error';
 import { Request, Response } from 'express';
 import { AuthenticateUseCase } from './AuthenticateUseCase';
 import { z } from 'zod';
+import { AppError } from '@shared/erros/AppError';
 
 class AuthenticateController {
   constructor(private authenticateUseCase: AuthenticateUseCase) {}

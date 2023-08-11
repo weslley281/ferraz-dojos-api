@@ -1,23 +1,30 @@
-import express, { NextFunction, Request, Response } from 'express';
-import swaggerUi from 'swagger-ui-express';
+//Data Base
+import { createConnectionDataBase } from '@database/db';
+import { createTableDojo } from '@database/models/dojosModel';
+import { createTableGraduation } from '@database/models/graduationsModel';
+import { createTableGraduation_instructor } from '@database/models/graduations_instructorsModel';
+import { createTableGraduation_student } from '@database/models/graduations_studentsModel';
+import { createTableInstructor } from '@database/models/instructorsModel';
+import { createTableMartial_art } from '@database/models/martial_art';
+import { createTableStudent } from 'database/models/studentsModel';
 
-import { createConnectionDataBase } from './database/db';
-import { createTableDojo } from './database/models/dojosModel';
+//express
+import express, { NextFunction, Request, Response } from 'express';
+
+//Swagger
+import swaggerUi from 'swagger-ui-express';
+import swaggerFile from "../../../swagger.json";
+
+//Erros
+import { AppError } from '@shared/erros/AppError';
+
+//Routes
 import { dojosRoutes } from './routes/dojo.routes';
-import swaggerFile from './swagger.json';
-import { AppError } from './modules/erros/Error';
 import { graduationsRoutes } from './routes/graduation.routes';
-import { createTableGraduation } from './database/models/graduationsModel';
 import { instructorsRoutes } from './routes/instructor.routes';
 import { studentsRoutes } from './routes/student.routes';
-
-import { createTableStudent } from './database/models/studentsModel';
-import { createTableGraduation_instructor } from './database/models/graduations_instructorsModel';
 import { graduations_instructorRoutes } from './routes/graduation_instructor.routes';
-import { createTableInstructor } from './database/models/instructorsModel';
-import { createTableGraduation_student } from './database/models/graduations_studentsModel';
 import { graduations_studentRoutes } from './routes/graduation_student.routes';
-import { createTableMartial_art } from './database/models/martial_art';
 import { martialArtsRoutes } from './routes/martial_art.routes';
 
 createConnectionDataBase();

@@ -4,13 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/src/server.js",
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "build": "tsup src --out-dir dist",
+    "start": "node dist/src/shared/infra/http/server.ts",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "clean": "tsc --build --clean",
     "test": "npx vitest"
   },
   "dependencies": {
+    "multer": "^1.4.2",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -31,6 +32,14 @@
     "ts-node-dev": "^2.0.0",
     "tsup": "^6.7.0",
     "typescript": "^5.0.3",
-    "vitest": "^0.29.8"
+    "vitest": "^0.29.8",
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-typescript": "^7.13.0",
+    "tsconfig-paths": "^3.9.0"
   }
 }

@@ -1,8 +1,8 @@
-import { AppError } from '../../../erros/Error';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { IDojoRepository } from '../../repositories/IDojoRepository';
 import { env } from '../../../../env';
+import { AppError } from '@shared/erros/AppError';
 
 interface IRequest {
   email: string;

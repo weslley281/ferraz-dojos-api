@@ -1,9 +1,9 @@
 import { Router, Request, Response } from 'express';
-import { createGraduation_instructorController } from '../modules/graduation_instructor/useCases/createGraduation_instructor';
-import { deleteGraduation_instructorController } from '../modules/graduation_instructor/useCases/deleteGraduation_instructor';
-import { getGraduation_instructorByIdController } from '../modules/graduation_instructor/useCases/getGraduation_instructorById';
-import { listGraduation_instructorController } from '../modules/graduation_instructor/useCases/listaAllGraduations_instructors';
-import { updateGraduation_instructorController } from '../modules/graduation_instructor/useCases/updateGraduation_instructor';
+import { createGraduation_instructorController } from '../../../../modules/graduation_instructor/useCases/createGraduation_instructor';
+import { deleteGraduation_instructorController } from '../../../../modules/graduation_instructor/useCases/deleteGraduation_instructor';
+import { getGraduation_instructorByIdController } from '../../../../modules/graduation_instructor/useCases/getGraduation_instructorById';
+import { listGraduation_instructorController } from '../../../../modules/graduation_instructor/useCases/listaAllGraduations_instructors';
+import { updateGraduation_instructorController } from '../../../../modules/graduation_instructor/useCases/updateGraduation_instructor';
 
 const graduations_instructorRoutes = Router();
 

@@ -1,9 +1,9 @@
 import { Router, Request, Response } from 'express';
-import { createGraduation_studentController } from '../modules/graduation_students/useCases/createGraduation_student';
-import { updateGraduation_studentController } from '../modules/graduation_students/useCases/updateGraduation_student';
-import { listGraduation_studentController } from '../modules/graduation_students/useCases/listaAllGraduations_student';
-import { getGraduation_studentByIdController } from '../modules/graduation_students/useCases/getGraduation_studentById';
-import { deleteGraduation_studentController } from '../modules/graduation_students/useCases/deleteGraduation_student';
+import { createGraduation_studentController } from '../../../../modules/graduation_students/useCases/createGraduation_student';
+import { updateGraduation_studentController } from '../../../../modules/graduation_students/useCases/updateGraduation_student';
+import { listGraduation_studentController } from '../../../../modules/graduation_students/useCases/listaAllGraduations_student';
+import { getGraduation_studentByIdController } from '../../../../modules/graduation_students/useCases/getGraduation_studentById';
+import { deleteGraduation_studentController } from '../../../../modules/graduation_students/useCases/deleteGraduation_student';
 
 const graduations_studentRoutes = Router();
 

@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
 import { ensureAuthenticated } from '../middlewares/authentication';
-import { createStudentController } from '../modules/student/useCases/createStudent';
-import { updateStudentController } from '../modules/student/useCases/updateStudent';
-import { listStudentController } from '../modules/student/useCases/listAllStudent';
-import { getStudentByIdController } from '../modules/student/useCases/getStudentById';
-import { getStudentByEmailController } from '../modules/student/useCases/getStudentByEmail';
-import { deleteStudentController } from '../modules/student/useCases/deleteStudent';
+import { createStudentController } from '../../../../modules/student/useCases/createStudent';
+import { updateStudentController } from '../../../../modules/student/useCases/updateStudent';
+import { listStudentController } from '../../../../modules/student/useCases/listAllStudent';
+import { getStudentByIdController } from '../../../../modules/student/useCases/getStudentById';
+import { getStudentByEmailController } from '../../../../modules/student/useCases/getStudentByEmail';
+import { deleteStudentController } from '../../../../modules/student/useCases/deleteStudent';
 
 const studentsRoutes = Router();
 

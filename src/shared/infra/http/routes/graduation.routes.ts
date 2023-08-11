@@ -1,10 +1,10 @@
 import { Router, Request, Response } from 'express';
-import { createGraduationController } from '../modules/graduation/useCases/createGraduation';
-import { updateGraduationController } from '../modules/graduation/useCases/updateGraduation';
-import { listGraduationController } from '../modules/graduation/useCases/listaAllGraduations';
-import { deleteGraduationController } from '../modules/graduation/useCases/deleteGraduation';
+import { createGraduationController } from '../../../../modules/graduation/useCases/createGraduation';
+import { updateGraduationController } from '../../../../modules/graduation/useCases/updateGraduation';
+import { listGraduationController } from '../../../../modules/graduation/useCases/listaAllGraduations';
+import { deleteGraduationController } from '../../../../modules/graduation/useCases/deleteGraduation';
 import { ensureAuthenticated } from '../middlewares/authentication';
-import { getGraduationByIdController } from '../modules/graduation/useCases/getGraduationById';
+import { getGraduationByIdController } from '../../../../modules/graduation/useCases/getGraduationById';
 
 const graduationsRoutes = Router();
 

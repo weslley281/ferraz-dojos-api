@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
-import { createDojoController } from '../modules/dojo/useCases/createDojo';
-import { updateDojoController } from '../modules/dojo/useCases/updateDojo';
-import { listDojoController } from '../modules/dojo/useCases/listaAllDojos';
-import { getDojoByIdController } from '../modules/dojo/useCases/getDojoById';
-import { getDojoByEmailController } from '../modules/dojo/useCases/getDojoByEmail';
-import { deleteDojoController } from '../modules/dojo/useCases/deleteDojo';
-import { authenticateController } from '../modules/dojo/useCases/authenticate';
+import { createDojoController } from '../../../../modules/dojo/useCases/createDojo';
+import { updateDojoController } from '../../../../modules/dojo/useCases/updateDojo';
+import { listDojoController } from '../../../../modules/dojo/useCases/listaAllDojos';
+import { getDojoByIdController } from '../../../../modules/dojo/useCases/getDojoById';
+import { getDojoByEmailController } from '../../../../modules/dojo/useCases/getDojoByEmail';
+import { deleteDojoController } from '../../../../modules/dojo/useCases/deleteDojo';
+import { authenticateController } from '../../../../modules/dojo/useCases/authenticate';
 import { ensureAuthenticated } from '../middlewares/authentication';
 
 const dojosRoutes = Router();
